@@ -5,7 +5,6 @@ import { Logger } from "@lindorm-io/winston";
 import { WebKeyHandler } from "@lindorm-io/koa-jwks";
 
 export interface IKeyPairJwksCacheWorkerOptions {
-  cacheExpiresInSeconds: number;
   jwksHost: string;
   redisConnectionOptions: IRedisConnectionOptions;
   winston: Logger;
@@ -13,9 +12,9 @@ export interface IKeyPairJwksCacheWorkerOptions {
 }
 
 export const keyPairJwksCacheWorker = (options: IKeyPairJwksCacheWorkerOptions): IntervalWorker => {
-  const { cacheExpiresInSeconds, jwksHost, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
+  const { jwksHost, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
 
-  const logger = winston.createChildLogger(["keyPairCacheWorker"]);
+  const logger = winston.createChildLogger(["keyPairJwksCacheWorker"]);
 
   return new IntervalWorker({
     callback: async (): Promise<void> => {
@@ -26,7 +25,7 @@ export const keyPairJwksCacheWorker = (options: IKeyPairJwksCacheWorkerOptions):
       const cache = new KeyPairCache({
         client: redis.getClient(),
         logger,
-        expiresInSeconds: cacheExpiresInSeconds,
+        expiresInSeconds: workerIntervalInSeconds + 120,
       });
 
       const array = await handler.getKeys();

@@ -6,7 +6,6 @@ import { KeyPairRepository } from "../infrastructure";
 import { Logger } from "@lindorm-io/winston";
 
 export interface IKeyPairMongoCacheWorkerOptions {
-  cacheExpiresInSeconds: number;
   mongoConnectionOptions: IMongoConnectionOptions;
   redisConnectionOptions: IRedisConnectionOptions;
   winston: Logger;
@@ -14,15 +13,9 @@ export interface IKeyPairMongoCacheWorkerOptions {
 }
 
 export const keyPairMongoCacheWorker = (options: IKeyPairMongoCacheWorkerOptions): IntervalWorker => {
-  const {
-    cacheExpiresInSeconds,
-    mongoConnectionOptions,
-    redisConnectionOptions,
-    winston,
-    workerIntervalInSeconds,
-  } = options;
+  const { mongoConnectionOptions, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
 
-  const logger = winston.createChildLogger(["keyPairCacheWorker"]);
+  const logger = winston.createChildLogger(["keyPairMongoCacheWorker"]);
 
   return new IntervalWorker({
     callback: async (): Promise<void> => {
@@ -38,7 +31,7 @@ export const keyPairMongoCacheWorker = (options: IKeyPairMongoCacheWorkerOptions
       const cache = new KeyPairCache({
         client: redis.getClient(),
         logger,
-        expiresInSeconds: cacheExpiresInSeconds,
+        expiresInSeconds: workerIntervalInSeconds + 120,
       });
 
       const array = await repository.findMany({});
