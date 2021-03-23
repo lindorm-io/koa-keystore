@@ -1,7 +1,7 @@
-import { TPromise } from "../typing";
-import { Keystore } from "@lindorm-io/key-pair";
 import { IKoaAppContext } from "@lindorm-io/koa";
 import { KeyPairCache } from "../infrastructure";
+import { Keystore } from "@lindorm-io/key-pair";
+import { TNext } from "../typing";
 
 export interface IKoaCachedKeystoreContext extends IKoaAppContext {
   keystore: Keystore;
@@ -10,7 +10,7 @@ export interface IKoaCachedKeystoreContext extends IKoaAppContext {
   };
 }
 
-export const cachedKeystoreMiddleware = async (ctx: IKoaCachedKeystoreContext, next: TPromise<void>): Promise<void> => {
+export const cachedKeystoreMiddleware = async (ctx: IKoaCachedKeystoreContext, next: TNext): Promise<void> => {
   const start = Date.now();
 
   const { cache, logger } = ctx;

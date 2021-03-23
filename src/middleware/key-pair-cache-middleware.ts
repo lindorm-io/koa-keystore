@@ -1,7 +1,7 @@
 import { IKoaAppContext } from "@lindorm-io/koa";
 import { KeyPairCache } from "../infrastructure";
 import { RedisConnection } from "@lindorm-io/redis";
-import { TPromise } from "../typing";
+import { TNext } from "../typing";
 
 export interface IKeyPairCacheContext extends IKoaAppContext {
   redis: RedisConnection;
@@ -10,7 +10,7 @@ export interface IKeyPairCacheContext extends IKoaAppContext {
   };
 }
 
-export const keyPairCacheMiddleware = async (ctx: IKeyPairCacheContext, next: TPromise<void>): Promise<void> => {
+export const keyPairCacheMiddleware = async (ctx: IKeyPairCacheContext, next: TNext): Promise<void> => {
   const start = Date.now();
 
   const { redis, logger } = ctx;

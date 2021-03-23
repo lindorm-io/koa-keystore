@@ -1,7 +1,7 @@
-import { KeyPairRepository } from "../infrastructure";
-import { TPromise } from "../typing";
 import { IKoaAppContext } from "@lindorm-io/koa";
+import { KeyPairRepository } from "../infrastructure";
 import { MongoConnection } from "@lindorm-io/mongo";
+import { TNext } from "../typing";
 
 export interface IKeyPairRepositoryContext extends IKoaAppContext {
   mongo: MongoConnection;
@@ -10,10 +10,7 @@ export interface IKeyPairRepositoryContext extends IKoaAppContext {
   };
 }
 
-export const keyPairRepositoryMiddleware = async (
-  ctx: IKeyPairRepositoryContext,
-  next: TPromise<void>,
-): Promise<void> => {
+export const keyPairRepositoryMiddleware = async (ctx: IKeyPairRepositoryContext, next: TNext): Promise<void> => {
   const start = Date.now();
 
   const { logger, mongo } = ctx;
