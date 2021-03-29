@@ -1,27 +1,17 @@
-import { IKoaAppContext } from "@lindorm-io/koa";
+import { IKoaCacheKeystoreContext } from "../typing";
 import { KeyPairCache } from "../infrastructure";
-import { RedisConnection } from "@lindorm-io/redis";
-import { TNext } from "../typing";
+import { TNext } from "@lindorm-io/koa-jwks";
 
-export interface IKeyPairCacheContext extends IKoaAppContext {
-  redis: RedisConnection;
-  cache: {
-    keyPair: KeyPairCache;
-  };
-}
-
-export const keyPairCacheMiddleware = async (ctx: IKeyPairCacheContext, next: TNext): Promise<void> => {
+export const keyPairCacheMiddleware = async (ctx: IKoaCacheKeystoreContext, next: TNext): Promise<void> => {
   const start = Date.now();
-
-  const { redis, logger } = ctx;
-  const client = await redis.getClient();
+  const client = await ctx.redis.getClient();
 
   ctx.cache = {
     ...(ctx.cache || {}),
-    keyPair: new KeyPairCache({ client, logger }),
+    keyPair: new KeyPairCache({ client, logger: ctx.logger }),
   };
 
-  logger.debug("keyPair cache connected");
+  ctx.logger.debug("keyPair cache connected");
 
   ctx.metrics = {
     ...(ctx.metrics || {}),

@@ -1,10 +1,10 @@
 import MockDate from "mockdate";
-import { keystoreMiddleware } from "./keystore-middleware";
+import { repositoryKeystoreMiddleware } from "./repository-keystore-middleware";
 import { getTestKeyPairEC, getTestKeyPairRSA, getTestRepository, logger } from "../test";
 
 MockDate.set("2020-01-01 08:00:00.000");
 
-const next = () => Promise.resolve();
+const next = jest.fn();
 
 describe("keystoreMiddleware", () => {
   let ctx: any;
@@ -20,7 +20,11 @@ describe("keystoreMiddleware", () => {
   });
 
   test("should successfully set keystore on ctx", async () => {
-    await expect(keystoreMiddleware(ctx, next)).resolves.toBe(undefined);
+    await expect(
+      repositoryKeystoreMiddleware({
+        keystoreName: "keystoreName",
+      })(ctx, next),
+    ).resolves.toBe(undefined);
 
     expect(ctx.keystore).toMatchSnapshot();
   });

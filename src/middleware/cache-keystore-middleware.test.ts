@@ -1,10 +1,10 @@
 import MockDate from "mockdate";
-import { cachedKeystoreMiddleware } from "./cached-keystore-middleware";
+import { cacheKeystoreMiddleware } from "./cache-keystore-middleware";
 import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 
 MockDate.set("2020-01-01 08:00:00.000");
 
-const next = () => Promise.resolve();
+const next = jest.fn();
 
 describe("cachedKeystoreMiddleware", () => {
   let ctx: any;
@@ -20,7 +20,11 @@ describe("cachedKeystoreMiddleware", () => {
   });
 
   test("should successfully set keystore on ctx", async () => {
-    await expect(cachedKeystoreMiddleware(ctx, next)).resolves.toBe(undefined);
+    await expect(
+      cacheKeystoreMiddleware({
+        keystoreName: "keystoreName",
+      })(ctx, next),
+    ).resolves.toBe(undefined);
 
     expect(ctx.keystore).toMatchSnapshot();
   });
