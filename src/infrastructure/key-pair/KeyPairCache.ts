@@ -3,7 +3,7 @@ import { IKeyPair, KeyPair } from "@lindorm-io/key-pair";
 import { schema } from "./schema";
 
 export interface IKeyPairCacheOptions extends ICacheOptions {
-  keystoreName?: string;
+  keystoreName: string;
 }
 
 export interface IKeyPairCache extends ICache<KeyPair> {
