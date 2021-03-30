@@ -1,5 +1,6 @@
-import { MongoConnection, MongoConnectionType } from "@lindorm-io/mongo";
 import { KeyPairRepository } from "../infrastructure";
+import { MongoConnection, MongoConnectionType } from "@lindorm-io/mongo";
+import { inMemoryStore } from "./in-memory";
 import { logger } from "./test-logger";
 
 export interface IGetTestRepositoryData {
@@ -12,7 +13,7 @@ export const getTestRepository = async (): Promise<IGetTestRepositoryData> => {
     auth: { user: "user", password: "password" },
     url: { host: "host", port: 1234 },
     databaseName: "databaseName",
-    inMemoryStore: {},
+    inMemoryStore,
   });
   await mongo.connect();
   const db = mongo.getDatabase();

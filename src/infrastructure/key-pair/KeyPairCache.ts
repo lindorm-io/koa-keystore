@@ -2,6 +2,10 @@ import { CacheBase, ICache, ICacheOptions } from "@lindorm-io/redis";
 import { IKeyPair, KeyPair } from "@lindorm-io/key-pair";
 import { schema } from "./schema";
 
+export interface IKeyPairCacheOptions extends ICacheOptions {
+  keystoreName?: string;
+}
+
 export interface IKeyPairCache extends ICache<KeyPair> {
   create(entity: KeyPair): Promise<KeyPair>;
   update(entity: KeyPair): Promise<KeyPair>;
@@ -11,10 +15,12 @@ export interface IKeyPairCache extends ICache<KeyPair> {
 }
 
 export class KeyPairCache extends CacheBase<KeyPair> implements IKeyPairCache {
-  constructor(options: ICacheOptions) {
+  constructor(options: IKeyPairCacheOptions) {
+    const entityName = options.keystoreName ? `KeyPair::${options.keystoreName}` : "KeyPair";
+
     super({
       client: options.client,
-      entityName: "KeyPair",
+      entityName,
       expiresInSeconds: options.expiresInSeconds,
       logger: options.logger,
       schema,

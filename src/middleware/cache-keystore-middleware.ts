@@ -8,7 +8,7 @@ export const cacheKeystoreMiddleware = (options: IKeystoreMiddlewareOptions): Mi
 
   return async (ctx: IKoaCacheKeystoreContext, next: TNext): Promise<void> => {
     const start = Date.now();
-    const keys = await ctx.cache.keyPair.findAll();
+    const keys = await ctx.cache.keyPair[keystoreName].findAll();
 
     ctx.keystore = {
       ...(ctx.keystore || {}),

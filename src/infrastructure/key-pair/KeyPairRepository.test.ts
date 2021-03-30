@@ -2,7 +2,7 @@ import MockDate from "mockdate";
 import { KeyPair } from "@lindorm-io/key-pair";
 import { KeyPairRepository } from "./KeyPairRepository";
 import { RepositoryEntityNotFoundError } from "@lindorm-io/mongo";
-import { getTestRepository } from "../../test";
+import { getTestRepository, inMemoryStore, resetStore } from "../../test";
 
 MockDate.set("2020-01-01 08:00:00.000");
 
@@ -23,20 +23,25 @@ describe("KeyPairRepository", () => {
     });
   });
 
+  afterEach(resetStore);
+
   test("should create", async () => {
     await expect(repository.create(keyPair)).resolves.toMatchSnapshot();
+    expect(inMemoryStore).toMatchSnapshot();
   });
 
   test("should update", async () => {
     await repository.create(keyPair);
 
     await expect(repository.update(keyPair)).resolves.toMatchSnapshot();
+    expect(inMemoryStore).toMatchSnapshot();
   });
 
   test("should find", async () => {
     await repository.create(keyPair);
 
     await expect(repository.find({ type: "type" })).resolves.toMatchSnapshot();
+    expect(inMemoryStore).toMatchSnapshot();
   });
 
   test("should find many", async () => {
@@ -52,6 +57,7 @@ describe("KeyPairRepository", () => {
     );
 
     await expect(repository.findMany({ type: "type" })).resolves.toMatchSnapshot();
+    expect(inMemoryStore).toMatchSnapshot();
   });
 
   test("should remove", async () => {
@@ -59,5 +65,6 @@ describe("KeyPairRepository", () => {
 
     await expect(repository.remove(keyPair)).resolves.toBe(undefined);
     await expect(repository.find({ id: keyPair.id })).rejects.toStrictEqual(expect.any(RepositoryEntityNotFoundError));
+    expect(inMemoryStore).toMatchSnapshot();
   });
 });

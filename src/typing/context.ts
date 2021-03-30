@@ -20,6 +20,8 @@ export interface IKoaRepositoryKeystoreContext extends IKoaKeystoreContext {
 export interface IKoaCacheKeystoreContext extends IKoaKeystoreContext {
   redis: RedisConnection;
   cache: {
-    keyPair: KeyPairCache;
+    keyPair: {
+      [key: string]: KeyPairCache;
+    };
   };
 }

@@ -15,8 +15,8 @@ describe("cachedKeystoreMiddleware", () => {
       logger,
     };
 
-    await ctx.cache.keyPair.create(getTestKeyPairEC());
-    await ctx.cache.keyPair.create(getTestKeyPairRSA());
+    await ctx.cache.keyPair.keystoreName.create(getTestKeyPairEC());
+    await ctx.cache.keyPair.keystoreName.create(getTestKeyPairRSA());
   });
 
   test("should successfully set keystore on ctx", async () => {

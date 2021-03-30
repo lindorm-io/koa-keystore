@@ -31,6 +31,55 @@ KeyPair {
 }
 `;
 
+exports[`KeyPairRepository should create 2`] = `
+Object {
+  "databaseName": Object {
+    "key_pair": Object {
+      "data": Array [
+        Object {
+          "algorithm": "algorithm",
+          "allowed": true,
+          "created": 2020-01-01T07:00:00.000Z,
+          "events": Array [
+            Object {
+              "date": 2020-01-01T07:00:00.000Z,
+              "name": "key_pair_created",
+              "payload": Object {
+                "algorithm": "algorithm",
+                "allowed": true,
+                "expires": 2020-01-01T07:00:00.000Z,
+                "passphrase": "passphrase",
+                "privateKey": "privateKey",
+                "publicKey": "publicKey",
+                "type": "type",
+              },
+            },
+          ],
+          "expires": 2020-01-01T07:00:00.000Z,
+          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
+          "passphrase": "passphrase",
+          "privateKey": "privateKey",
+          "publicKey": "publicKey",
+          "type": "type",
+          "updated": 2020-01-01T07:00:00.000Z,
+          "version": 0,
+        },
+      ],
+      "indices": Array [
+        Object {
+          "index": Object {
+            "id": 1,
+          },
+          "options": Object {
+            "unique": true,
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
 exports[`KeyPairRepository should find 1`] = `
 KeyPair {
   "_algorithm": "algorithm",
@@ -59,6 +108,55 @@ KeyPair {
   "_type": "type",
   "_updated": 2020-01-01T07:00:00.000Z,
   "_version": 0,
+}
+`;
+
+exports[`KeyPairRepository should find 2`] = `
+Object {
+  "databaseName": Object {
+    "key_pair": Object {
+      "data": Array [
+        Object {
+          "algorithm": "algorithm",
+          "allowed": true,
+          "created": 2020-01-01T07:00:00.000Z,
+          "events": Array [
+            Object {
+              "date": 2020-01-01T07:00:00.000Z,
+              "name": "key_pair_created",
+              "payload": Object {
+                "algorithm": "algorithm",
+                "allowed": true,
+                "expires": 2020-01-01T07:00:00.000Z,
+                "passphrase": "passphrase",
+                "privateKey": "privateKey",
+                "publicKey": "publicKey",
+                "type": "type",
+              },
+            },
+          ],
+          "expires": 2020-01-01T07:00:00.000Z,
+          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
+          "passphrase": "passphrase",
+          "privateKey": "privateKey",
+          "publicKey": "publicKey",
+          "type": "type",
+          "updated": 2020-01-01T07:00:00.000Z,
+          "version": 0,
+        },
+      ],
+      "indices": Array [
+        Object {
+          "index": Object {
+            "id": 1,
+          },
+          "options": Object {
+            "unique": true,
+          },
+        },
+      ],
+    },
+  },
 }
 `;
 
@@ -123,6 +221,103 @@ Array [
 ]
 `;
 
+exports[`KeyPairRepository should find many 2`] = `
+Object {
+  "databaseName": Object {
+    "key_pair": Object {
+      "data": Array [
+        Object {
+          "algorithm": "algorithm",
+          "allowed": true,
+          "created": 2020-01-01T07:00:00.000Z,
+          "events": Array [
+            Object {
+              "date": 2020-01-01T07:00:00.000Z,
+              "name": "key_pair_created",
+              "payload": Object {
+                "algorithm": "algorithm",
+                "allowed": true,
+                "expires": 2020-01-01T07:00:00.000Z,
+                "passphrase": "passphrase",
+                "privateKey": "privateKey",
+                "publicKey": "publicKey",
+                "type": "type",
+              },
+            },
+          ],
+          "expires": 2020-01-01T07:00:00.000Z,
+          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
+          "passphrase": "passphrase",
+          "privateKey": "privateKey",
+          "publicKey": "publicKey",
+          "type": "type",
+          "updated": 2020-01-01T07:00:00.000Z,
+          "version": 0,
+        },
+        Object {
+          "algorithm": "other",
+          "allowed": true,
+          "created": 2020-01-01T07:00:00.000Z,
+          "events": Array [
+            Object {
+              "date": 2020-01-01T07:00:00.000Z,
+              "name": "key_pair_created",
+              "payload": Object {
+                "algorithm": "other",
+                "allowed": true,
+                "expires": null,
+                "passphrase": null,
+                "privateKey": "privateKey",
+                "publicKey": "publicKey",
+                "type": "type",
+              },
+            },
+          ],
+          "expires": null,
+          "id": "e1ff05d4-12a5-42c0-9c70-43ead4ccaef6",
+          "passphrase": null,
+          "privateKey": "privateKey",
+          "publicKey": "publicKey",
+          "type": "type",
+          "updated": 2020-01-01T07:00:00.000Z,
+          "version": 0,
+        },
+      ],
+      "indices": Array [
+        Object {
+          "index": Object {
+            "id": 1,
+          },
+          "options": Object {
+            "unique": true,
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`KeyPairRepository should remove 1`] = `
+Object {
+  "databaseName": Object {
+    "key_pair": Object {
+      "data": Array [],
+      "indices": Array [
+        Object {
+          "index": Object {
+            "id": 1,
+          },
+          "options": Object {
+            "unique": true,
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
 exports[`KeyPairRepository should update 1`] = `
 KeyPair {
   "_algorithm": "algorithm",
@@ -151,5 +346,54 @@ KeyPair {
   "_type": "type",
   "_updated": 2020-01-01T07:00:00.000Z,
   "_version": 1,
+}
+`;
+
+exports[`KeyPairRepository should update 2`] = `
+Object {
+  "databaseName": Object {
+    "key_pair": Object {
+      "data": Array [
+        Object {
+          "algorithm": "algorithm",
+          "allowed": true,
+          "created": 2020-01-01T07:00:00.000Z,
+          "events": Array [
+            Object {
+              "date": 2020-01-01T07:00:00.000Z,
+              "name": "key_pair_created",
+              "payload": Object {
+                "algorithm": "algorithm",
+                "allowed": true,
+                "expires": 2020-01-01T07:00:00.000Z,
+                "passphrase": "passphrase",
+                "privateKey": "privateKey",
+                "publicKey": "publicKey",
+                "type": "type",
+              },
+            },
+          ],
+          "expires": 2020-01-01T07:00:00.000Z,
+          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
+          "passphrase": "passphrase",
+          "privateKey": "privateKey",
+          "publicKey": "publicKey",
+          "type": "type",
+          "updated": 2020-01-01T07:00:00.000Z,
+          "version": 1,
+        },
+      ],
+      "indices": Array [
+        Object {
+          "index": Object {
+            "id": 1,
+          },
+          "options": Object {
+            "unique": true,
+          },
+        },
+      ],
+    },
+  },
 }
 `;
