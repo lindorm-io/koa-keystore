@@ -18,7 +18,9 @@ Ensure that the repository exists on your context, and then add the keystore mid
 
 ```typescript
 koaApp.addMiddleware(keyPairRepositoryMiddleware);
-koaApp.addMiddleware(keystoreMiddleware);
+koaApp.addMiddleware(repositoryKeystoreMiddleware({
+  keystoreName : "auth",
+}));
 ```
 
 ### Keystore Middleware with Redis Cache connected to Mongo Repository
@@ -26,6 +28,7 @@ Ensure that redis is continuously updated. Ensure that the cache exists on your 
 
 ```typescript
 koaApp.addWorker(keyPairMongoCacheWorker({
+  keystoreName : "auth",
   mongoConnectionOptions: {
     auth: { user: "root", password: "example" },
     url: { host: "mongo.host", port: 27000 },
@@ -38,8 +41,8 @@ koaApp.addWorker(keyPairMongoCacheWorker({
   winston: winstonLogger,
   workerIntervalInSeconds: 60 * 60 // 60 minutes
 }))
-koaApp.addMiddleware(keyPairCacheMiddleware);
-koaApp.addMiddleware(cachedKeystoreMiddleware);
+koaApp.addMiddleware(keyPairCacheMiddleware({ keystoreName: "auth" }));
+koaApp.addMiddleware(cacheKeystoreMiddleware({ keystoreName: "auth" }));
 ```
 
 ### Keystore Middleware with Redis Cache connected to JWKS Handler
@@ -48,6 +51,7 @@ Ensure that redis is continuously updated. Ensure that the cache exists on your 
 ```typescript
 koaApp.addWorker(keyPairJwksCacheWorker({
   jwksHost: "https://authentication.service",
+  keystoreName: "auth",
   redisConnectionOptions: {
     port: 1000,
     type: RedisConnectionType.CACHE,
@@ -55,6 +59,6 @@ koaApp.addWorker(keyPairJwksCacheWorker({
   winston: winstonLogger,
   workerIntervalInSeconds: 60 * 60 // 60 minutes
 }))
-koaApp.addMiddleware(keyPairCacheMiddleware);
-koaApp.addMiddleware(cachedKeystoreMiddleware);
+koaApp.addMiddleware(keyPairCacheMiddleware({ keystoreName: "auth" }));
+koaApp.addMiddleware(cacheKeystoreMiddleware({ keystoreName: "auth" }));
 ```
