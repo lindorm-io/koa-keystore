@@ -13,7 +13,7 @@ export const keyPairCacheMiddleware = (options: IKeystoreMiddlewareOptions): Mid
     ctx.cache = {
       ...(ctx.cache || {}),
       keyPair: {
-        ...(ctx.cache.keyPair || {}),
+        ...(ctx.cache?.keyPair || {}),
         [keystoreName]: new KeyPairCache({ client, logger: ctx.logger, keystoreName }),
       },
     };

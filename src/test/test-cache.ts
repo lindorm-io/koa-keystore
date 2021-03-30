@@ -1,6 +1,5 @@
 import { KeyPairCache } from "../infrastructure";
-import { RedisConnection, RedisConnectionType } from "@lindorm-io/redis";
-import { inMemoryCache } from "./in-memory";
+import { getTestRedis } from "./test-redis";
 import { logger } from "./test-logger";
 
 export interface IGetTestCacheData {
@@ -10,12 +9,7 @@ export interface IGetTestCacheData {
 }
 
 export const getTestCache = async (): Promise<IGetTestCacheData> => {
-  const redis = new RedisConnection({
-    port: 1000,
-    type: RedisConnectionType.MEMORY,
-    inMemoryCache,
-  });
-  await redis.connect();
+  const redis = await getTestRedis();
   const client = redis.getClient();
 
   return {
