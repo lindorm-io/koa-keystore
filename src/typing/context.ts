@@ -11,14 +11,18 @@ interface IKoaKeystoreContext extends IKoaAppContext {
 }
 
 export interface IKoaRepositoryKeystoreContext extends IKoaKeystoreContext {
-  mongo: MongoConnection;
+  client: {
+    mongo: MongoConnection;
+  };
   repository: {
-    keyPair: KeyPairRepository;
+    keyPairRepository: KeyPairRepository;
   };
 }
 
 export interface IKoaCacheKeystoreContext extends IKoaKeystoreContext {
-  redis: RedisConnection;
+  client: {
+    redis: RedisConnection;
+  };
   cache: {
     keyPair: {
       [key: string]: KeyPairCache;

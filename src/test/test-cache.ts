@@ -10,7 +10,7 @@ export interface IGetTestCacheData {
 
 export const getTestCache = async (): Promise<IGetTestCacheData> => {
   const redis = await getTestRedis();
-  const client = redis.getClient();
+  const client = redis.client();
 
   return {
     keyPair: {

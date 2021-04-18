@@ -3,15 +3,15 @@ import { getTestMongo } from "./test-mongo";
 import { logger } from "./test-logger";
 
 export interface IGetTestRepositoryData {
-  keyPair: KeyPairRepository;
+  keyPairRepository: KeyPairRepository;
 }
 
 export const getTestRepository = async (): Promise<IGetTestRepositoryData> => {
   const mongo = await getTestMongo();
-  const db = mongo.getDatabase();
+  const db = mongo.database();
 
   return {
     // @ts-ignore
-    keyPair: new KeyPairRepository({ db, logger }),
+    keyPairRepository: new KeyPairRepository({ db, logger }),
   };
 };

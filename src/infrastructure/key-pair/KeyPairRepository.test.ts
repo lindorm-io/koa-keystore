@@ -11,7 +11,7 @@ describe("KeyPairRepository", () => {
   let keyPair: KeyPair;
 
   beforeEach(async () => {
-    ({ keyPair: repository } = await getTestRepository());
+    ({ keyPairRepository: repository } = await getTestRepository());
     keyPair = new KeyPair({
       id: "be3a62d1-24a0-401c-96dd-3aff95356811",
       algorithm: "algorithm",

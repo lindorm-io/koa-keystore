@@ -26,7 +26,7 @@ export const keyPairJwksCacheWorker = (options: IKeyPairJwksCacheWorkerOptions):
       const redis = new RedisConnection(redisConnectionOptions);
       await redis.connect();
       const cache = new KeyPairCache({
-        client: redis.getClient(),
+        client: redis.client(),
         logger,
         expiresInSeconds,
         keystoreName,

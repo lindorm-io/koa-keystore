@@ -1,30 +1,24 @@
 import { IKeystoreMiddlewareOptions, IKoaCacheKeystoreContext } from "../typing";
 import { KeyPairCache } from "../infrastructure";
-import { TNext } from "@lindorm-io/koa-jwks";
-import { Middleware } from "koa";
+import { Middleware, Next } from "@lindorm-io/koa";
 
-export const keyPairCacheMiddleware = (options: IKeystoreMiddlewareOptions): Middleware => {
-  const { keystoreName } = options;
+export const keyPairCacheMiddleware = (options: IKeystoreMiddlewareOptions): Middleware => async (
+  ctx: IKoaCacheKeystoreContext,
+  next: Next,
+): Promise<void> => {
+  const start = Date.now();
 
-  return async (ctx: IKoaCacheKeystoreContext, next: TNext): Promise<void> => {
-    const start = Date.now();
-    const client = await ctx.redis.getClient();
-
-    ctx.cache = {
-      ...(ctx.cache || {}),
-      keyPair: {
-        ...(ctx.cache?.keyPair || {}),
-        [keystoreName]: new KeyPairCache({ client, logger: ctx.logger, keystoreName }),
-      },
-    };
-
-    ctx.logger.debug("keyPair cache connected");
-
-    ctx.metrics = {
-      ...(ctx.metrics || {}),
-      keyPairCache: Date.now() - start,
-    };
-
-    await next();
+  ctx.cache.keyPair = {
+    ...(ctx.cache?.keyPair || {}),
   };
+
+  ctx.cache.keyPair[options.keystoreName] = new KeyPairCache({
+    client: await ctx.client.redis.client(),
+    logger: ctx.logger,
+    keystoreName: options.keystoreName,
+  });
+
+  ctx.metrics.cache = (ctx.metrics.cache || 0) + (Date.now() - start);
+
+  await next();
 };

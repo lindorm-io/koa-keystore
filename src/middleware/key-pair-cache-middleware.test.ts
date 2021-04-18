@@ -7,13 +7,15 @@ MockDate.set("2020-01-01 08:00:00.000");
 
 const next = jest.fn();
 
-describe("should set keystore on context", () => {
+describe("keyPairCacheMiddleware", () => {
   let ctx: any;
 
   beforeEach(async () => {
     ctx = {
-      redis: await getTestRedis(),
+      cache: {},
+      client: { redis: await getTestRedis() },
       logger,
+      metrics: {},
     };
   });
 
@@ -25,6 +27,6 @@ describe("should set keystore on context", () => {
     ).resolves.toBe(undefined);
 
     expect(ctx.cache.keyPair.keystoreName).toStrictEqual(expect.any(KeyPairCache));
-    expect(ctx.metrics.keyPairCache).toBe(0);
+    expect(ctx.metrics.cache).toStrictEqual(expect.any(Number));
   });
 });

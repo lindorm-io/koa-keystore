@@ -9,6 +9,8 @@ npm install --save @lindorm-io/koa-keystore
 ### Peer Dependencies
 This package has the following peer dependencies: 
 * [@lindorm-io/koa](https://www.npmjs.com/package/@lindorm-io/koa)
+* [@lindorm-io/mongo](https://www.npmjs.com/package/@lindorm-io/mongo)
+* [@lindorm-io/redis](https://www.npmjs.com/package/@lindorm-io/redis)
 * [@lindorm-io/winston](https://www.npmjs.com/package/@lindorm-io/winston)
 
 ## Usage

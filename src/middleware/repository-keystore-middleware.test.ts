@@ -6,17 +6,19 @@ MockDate.set("2020-01-01 08:00:00.000");
 
 const next = jest.fn();
 
-describe("keystoreMiddleware", () => {
+describe("repositoryKeystoreMiddleware", () => {
   let ctx: any;
 
   beforeEach(async () => {
     ctx = {
-      repository: await getTestRepository(),
+      keystore: {},
       logger,
+      metrics: {},
+      repository: await getTestRepository(),
     };
 
-    await ctx.repository.keyPair.create(getTestKeyPairEC());
-    await ctx.repository.keyPair.create(getTestKeyPairRSA());
+    await ctx.repository.keyPairRepository.create(getTestKeyPairEC());
+    await ctx.repository.keyPairRepository.create(getTestKeyPairRSA());
   });
 
   test("should successfully set keystore on ctx", async () => {
@@ -27,5 +29,6 @@ describe("keystoreMiddleware", () => {
     ).resolves.toBe(undefined);
 
     expect(ctx.keystore).toMatchSnapshot();
+    expect(ctx.metrics.keystore).toStrictEqual(expect.any(Number));
   });
 });

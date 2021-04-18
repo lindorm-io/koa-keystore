@@ -12,7 +12,9 @@ describe("cachedKeystoreMiddleware", () => {
   beforeEach(async () => {
     ctx = {
       cache: await getTestCache(),
+      keystore: {},
       logger,
+      metrics: {},
     };
 
     await ctx.cache.keyPair.keystoreName.create(getTestKeyPairEC());
@@ -27,5 +29,6 @@ describe("cachedKeystoreMiddleware", () => {
     ).resolves.toBe(undefined);
 
     expect(ctx.keystore).toMatchSnapshot();
+    expect(ctx.metrics.keystore).toStrictEqual(expect.any(Number));
   });
 });

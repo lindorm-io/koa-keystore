@@ -25,14 +25,14 @@ export const keyPairMongoCacheWorker = (options: IKeyPairMongoCacheWorkerOptions
       const mongo = new MongoConnection(mongoConnectionOptions);
       await mongo.connect();
       const repository = new KeyPairRepository({
-        db: mongo.getDatabase(),
+        db: mongo.database(),
         logger,
       });
 
       const redis = new RedisConnection(redisConnectionOptions);
       await redis.connect();
       const cache = new KeyPairCache({
-        client: redis.getClient(),
+        client: redis.client(),
         logger,
         expiresInSeconds,
         keystoreName,

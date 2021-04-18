@@ -1,27 +1,18 @@
 import { IKeystoreMiddlewareOptions, IKoaRepositoryKeystoreContext } from "../typing";
 import { Keystore } from "@lindorm-io/key-pair";
-import { Middleware } from "koa";
-import { TNext } from "@lindorm-io/koa-jwks";
+import { Middleware, Next } from "@lindorm-io/koa";
 
-export const repositoryKeystoreMiddleware = (options: IKeystoreMiddlewareOptions): Middleware => {
-  const { keystoreName } = options;
+export const repositoryKeystoreMiddleware = (options: IKeystoreMiddlewareOptions): Middleware => async (
+  ctx: IKoaRepositoryKeystoreContext,
+  next: Next,
+): Promise<void> => {
+  const start = Date.now();
 
-  return async (ctx: IKoaRepositoryKeystoreContext, next: TNext): Promise<void> => {
-    const start = Date.now();
-    const keys = await ctx.repository.keyPair.findMany({});
+  ctx.keystore[options.keystoreName] = new Keystore({
+    keys: await ctx.repository.keyPairRepository.findMany({}),
+  });
 
-    ctx.keystore = {
-      ...(ctx.keystore || {}),
-      [keystoreName]: new Keystore({ keys }),
-    };
+  ctx.metrics.keystore = (ctx.metrics.keystore || 0) + (Date.now() - start);
 
-    ctx.logger.debug("keystore initialised", { amount: keys.length });
-
-    ctx.metrics = {
-      ...(ctx.metrics || {}),
-      keystore: Date.now() - start,
-    };
-
-    await next();
-  };
+  await next();
 };

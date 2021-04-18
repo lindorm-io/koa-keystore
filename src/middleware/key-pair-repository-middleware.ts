@@ -1,22 +1,19 @@
 import { IKoaRepositoryKeystoreContext } from "../typing";
 import { KeyPairRepository } from "../infrastructure";
-import { TNext } from "@lindorm-io/koa-jwks";
+import { Middleware, Next } from "@lindorm-io/koa";
 
-export const keyPairRepositoryMiddleware = async (ctx: IKoaRepositoryKeystoreContext, next: TNext): Promise<void> => {
+export const keyPairRepositoryMiddleware: Middleware = async (
+  ctx: IKoaRepositoryKeystoreContext,
+  next: Next,
+): Promise<void> => {
   const start = Date.now();
-  const db = await ctx.mongo.getDatabase();
 
-  ctx.repository = {
-    ...(ctx.repository || {}),
-    keyPair: new KeyPairRepository({ db, logger: ctx.logger }),
-  };
+  ctx.repository.keyPairRepository = new KeyPairRepository({
+    db: await ctx.client.mongo.database(),
+    logger: ctx.logger,
+  });
 
-  ctx.logger.debug("keyPair repository connected");
-
-  ctx.metrics = {
-    ...(ctx.metrics || {}),
-    keyPairRepository: Date.now() - start,
-  };
+  ctx.metrics.repository = (ctx.metrics.repository || 0) + (Date.now() - start);
 
   await next();
 };
