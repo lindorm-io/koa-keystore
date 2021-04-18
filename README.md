@@ -33,8 +33,9 @@ koaApp.addWorker(keyPairMongoCacheWorker({
   keystoreName : "auth",
   mongoConnectionOptions: {
     auth: { user: "root", password: "example" },
-    url: { host: "mongo.host", port: 27000 },
     databaseName: "database",
+    hostname: "mongo.host", 
+    port: 27000,
   },
   redisConnectionOptions: {
     port: 1000,
