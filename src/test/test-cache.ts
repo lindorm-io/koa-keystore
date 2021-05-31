@@ -17,7 +17,6 @@ export const getTestCache = async (): Promise<IGetTestCacheData> => {
       keystoreName: new KeyPairCache({
         client,
         keystoreName: "keystoreName",
-        // @ts-ignore
         logger,
       }),
     },

@@ -11,7 +11,6 @@ export const getTestRepository = async (): Promise<IGetTestRepositoryData> => {
   const db = mongo.database();
 
   return {
-    // @ts-ignore
     keyPairRepository: new KeyPairRepository({ db, logger }),
   };
 };

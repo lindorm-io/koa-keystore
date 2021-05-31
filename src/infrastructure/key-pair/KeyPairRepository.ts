@@ -1,55 +1,19 @@
-import { IKeyPair, KeyPair } from "@lindorm-io/key-pair";
-import { IRepository, IRepositoryOptions, RepositoryBase } from "@lindorm-io/mongo";
-import { MongoCollection } from "../../enum";
+import { IKeyPairAttributes, IKeyPairOptions, KeyPair } from "@lindorm-io/key-pair";
+import { IRepositoryOptions, RepositoryBase } from "@lindorm-io/mongo";
 import { indices } from "./indices";
-import { schema } from "./schema";
 
-export interface IKeyPairFilter {
-  id?: string;
-  algorithm?: string;
-  type?: string;
-}
-
-export interface IKeyPairRepository extends IRepository<KeyPair> {
-  create(entity: KeyPair): Promise<KeyPair>;
-  update(entity: KeyPair): Promise<KeyPair>;
-  find(entity: IKeyPairFilter): Promise<KeyPair>;
-  findMany(filter: IKeyPairFilter): Promise<Array<KeyPair>>;
-  findOrCreate(entity: IKeyPairFilter): Promise<KeyPair>;
-  remove(entity: KeyPair): Promise<void>;
-}
-
-export class KeyPairRepository extends RepositoryBase<KeyPair> implements IKeyPairRepository {
+export class KeyPairRepository extends RepositoryBase<IKeyPairAttributes, KeyPair> {
   constructor(options: IRepositoryOptions) {
     super({
-      collectionName: MongoCollection.KEY_PAIR,
+      collectionName: "key_pair",
       db: options.db,
       logger: options.logger,
       indices,
-      schema,
     });
   }
 
-  protected createEntity(data: IKeyPair): KeyPair {
+  protected createEntity(data: IKeyPairAttributes): KeyPair {
     return new KeyPair(data);
-  }
-
-  protected getEntityJSON(entity: KeyPair): IKeyPair {
-    return {
-      id: entity.id,
-      version: entity.version,
-      created: entity.created,
-      updated: entity.updated,
-      events: entity.events,
-
-      allowed: entity.allowed,
-      algorithm: entity.algorithm,
-      expires: entity.expires,
-      passphrase: entity.passphrase,
-      privateKey: entity.privateKey,
-      publicKey: entity.publicKey,
-      type: entity.type,
-    };
   }
 
   public async create(entity: KeyPair): Promise<KeyPair> {
@@ -60,15 +24,23 @@ export class KeyPairRepository extends RepositoryBase<KeyPair> implements IKeyPa
     return super.update(entity);
   }
 
-  public async find(filter: IKeyPairFilter): Promise<KeyPair> {
+  public async find(filter: Partial<IKeyPairAttributes>): Promise<KeyPair> {
     return super.find(filter);
   }
 
-  public async findMany(filter: IKeyPairFilter): Promise<Array<KeyPair>> {
+  public async findMany(filter: Partial<IKeyPairAttributes>): Promise<Array<KeyPair>> {
     return super.findMany(filter);
+  }
+
+  public async findOrCreate(filter: Partial<IKeyPairOptions>): Promise<KeyPair> {
+    return super.findOrCreate(filter);
   }
 
   public async remove(entity: KeyPair): Promise<void> {
     await super.remove(entity);
+  }
+
+  public async removeMany(filter: Partial<IKeyPairAttributes>): Promise<void> {
+    await super.removeMany(filter);
   }
 }

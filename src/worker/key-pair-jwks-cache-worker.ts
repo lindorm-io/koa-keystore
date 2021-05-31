@@ -3,10 +3,10 @@ import { IntervalWorker } from "@lindorm-io/koa";
 import { KeyPairCache } from "../infrastructure";
 import { Keystore } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
-import { WebKeyHandler } from "@lindorm-io/koa-jwks";
+import { WebKeyHandler } from "../class";
 
 export interface IKeyPairJwksCacheWorkerOptions {
-  jwksHost: string;
+  baseUrl: string;
   keystoreName: string;
   redisConnectionOptions: IRedisConnectionOptions;
   winston: Logger;
@@ -14,14 +14,14 @@ export interface IKeyPairJwksCacheWorkerOptions {
 }
 
 export const keyPairJwksCacheWorker = (options: IKeyPairJwksCacheWorkerOptions): IntervalWorker => {
-  const { jwksHost, keystoreName, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
+  const { baseUrl, keystoreName, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
   const expiresInSeconds = workerIntervalInSeconds + 120;
   const time = workerIntervalInSeconds * 1000;
   const logger = winston.createChildLogger(["keyPairJwksCacheWorker"]);
 
   return new IntervalWorker({
     callback: async (): Promise<void> => {
-      const handler = new WebKeyHandler({ host: jwksHost, logger });
+      const handler = new WebKeyHandler({ baseUrl, logger, name: keystoreName });
 
       const redis = new RedisConnection(redisConnectionOptions);
       await redis.connect();
@@ -36,7 +36,8 @@ export const keyPairJwksCacheWorker = (options: IKeyPairJwksCacheWorkerOptions):
 
       for (const entity of array) {
         if (!Keystore.isKeyUsable(entity)) continue;
-        await cache.create(entity);
+        const expires = Keystore.getTTL(entity);
+        await cache.create(entity, expires?.seconds);
       }
 
       await redis.disconnect();

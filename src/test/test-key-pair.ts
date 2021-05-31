@@ -1,10 +1,11 @@
-import { Algorithm, KeyPair, KeyType } from "@lindorm-io/key-pair";
+import { Algorithm, KeyPair, KeyType, NamedCurve } from "@lindorm-io/key-pair";
 
 export const getTestKeyPairEC = (): KeyPair =>
   new KeyPair({
     id: "7531da89-12e9-403e-925a-5da49100635c",
-    algorithm: Algorithm.ES512,
-    allowed: true,
+    type: KeyType.EC,
+    algorithms: [Algorithm.ES512],
+    namedCurve: NamedCurve.P521,
     privateKey:
       "-----BEGIN PRIVATE KEY-----\n" +
       "MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3\n" +
@@ -21,14 +22,13 @@ export const getTestKeyPairEC = (): KeyPair =>
       "1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg\n" +
       "OQLhJKj4uO0wPYgkmFU=\n" +
       "-----END PUBLIC KEY-----\n",
-    type: KeyType.EC,
   });
 
 export const getTestKeyPairRSA = (): KeyPair =>
   new KeyPair({
     id: "3f6ab288-7e0e-48b5-90ab-4684257ebe5e",
-    algorithm: Algorithm.RS512,
-    allowed: true,
+    type: KeyType.RSA,
+    algorithms: [Algorithm.RS512],
     privateKey:
       "-----BEGIN RSA PRIVATE KEY-----\n" +
       "Proc-Type: 4,ENCRYPTED\n" +
@@ -98,5 +98,4 @@ export const getTestKeyPairRSA = (): KeyPair =>
       "lBUcoS4sBIR3urpvx1EKM1xaUHfchhIKnY5KGTEM+5rJVwlDq+3lLcrJI3AErTAX\n" +
       "gSR6fcZmKuI4nCfTKl3ykozcPwpEmfRgSBDHKwDJe6ZbK0sL4ScVookCAwEAAQ==\n" +
       "-----END RSA PUBLIC KEY-----\n",
-    type: KeyType.RSA,
   });

@@ -42,7 +42,8 @@ export const keyPairMongoCacheWorker = (options: IKeyPairMongoCacheWorkerOptions
 
       for (const entity of array) {
         if (!Keystore.isKeyUsable(entity)) continue;
-        await cache.create(entity);
+        const expires = Keystore.getTTL(entity);
+        await cache.create(entity, expires?.seconds);
       }
 
       await mongo.disconnect();

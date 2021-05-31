@@ -2,7 +2,7 @@ import MockDate from "mockdate";
 import { cacheKeystoreMiddleware } from "./cache-keystore-middleware";
 import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 
-MockDate.set("2020-01-01 08:00:00.000");
+MockDate.set("2020-01-01T08:00:00.000Z");
 
 const next = jest.fn();
 

@@ -1,10 +1,10 @@
+import { DefaultState, Middleware } from "@lindorm-io/koa";
 import { IKoaRepositoryKeystoreContext } from "../typing";
 import { KeyPairRepository } from "../infrastructure";
-import { Middleware, Next } from "@lindorm-io/koa";
 
-export const keyPairRepositoryMiddleware: Middleware = async (
-  ctx: IKoaRepositoryKeystoreContext,
-  next: Next,
+export const keyPairRepositoryMiddleware: Middleware<DefaultState, IKoaRepositoryKeystoreContext> = async (
+  ctx,
+  next,
 ): Promise<void> => {
   const start = Date.now();
 

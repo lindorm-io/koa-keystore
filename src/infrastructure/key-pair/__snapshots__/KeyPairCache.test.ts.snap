@@ -1,131 +1,343 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KeyPairCache should create 1`] = `
-KeyPair {
-  "_algorithm": "algorithm",
-  "_allowed": true,
-  "_created": 2020-01-01T07:00:00.000Z,
-  "_events": Array [],
-  "_expires": 2020-01-01T07:00:00.000Z,
-  "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-  "_passphrase": "passphrase",
-  "_privateKey": "privateKey",
-  "_publicKey": "publicKey",
-  "_type": "type",
-  "_updated": 2020-01-01T07:00:00.000Z,
-  "_version": 0,
-}
-`;
-
-exports[`KeyPairCache should create 2`] = `
 Object {
-  "KeyPair::keystoreName::be3a62d1-24a0-401c-96dd-3aff95356811": Object {
-    "blob": "{\\"json\\":{\\"id\\":\\"be3a62d1-24a0-401c-96dd-3aff95356811\\",\\"version\\":\\"0\\",\\"created\\":\\"2020-01-01T07:00:00.000Z\\",\\"updated\\":\\"2020-01-01T07:00:00.000Z\\",\\"events\\":[],\\"allowed\\":\\"true\\",\\"algorithm\\":\\"algorithm\\",\\"expires\\":\\"2020-01-01T07:00:00.000Z\\",\\"passphrase\\":\\"passphrase\\",\\"privateKey\\":\\"privateKey\\",\\"publicKey\\":\\"publicKey\\",\\"type\\":\\"type\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"version\\":\\"number\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"events\\":[],\\"allowed\\":\\"boolean\\",\\"algorithm\\":\\"string\\",\\"expires\\":\\"date\\",\\"passphrase\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
-    "expiresInSeconds": null,
+  "KeyPair::keystoreName::7531da89-12e9-403e-925a-5da49100635c": Object {
+    "blob": "{\\"json\\":{\\"id\\":\\"7531da89-12e9-403e-925a-5da49100635c\\",\\"created\\":\\"2020-01-01T08:00:00.000Z\\",\\"events\\":[{\\"name\\":\\"key_pair_created\\",\\"payload\\":{\\"id\\":\\"7531da89-12e9-403e-925a-5da49100635c\\",\\"created\\":\\"2020-01-01T08:00:00.000Z\\",\\"updated\\":\\"2020-01-01T08:00:00.000Z\\",\\"version\\":\\"0\\",\\"algorithms\\":[\\"ES512\\"],\\"allowed\\":\\"true\\",\\"expires\\":\\"null\\",\\"namedCurve\\":\\"P-521\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"ES512\\",\\"privateKey\\":\\"-----BEGIN PRIVATE KEY-----\\\\nMIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3\\\\nmJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk\\\\n+f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM\\\\ngoTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8\\\\nQT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY\\\\nVQ==\\\\n-----END PRIVATE KEY-----\\\\n\\",\\"publicKey\\":\\"-----BEGIN PUBLIC KEY-----\\\\nMIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq\\\\nWM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ\\\\n1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg\\\\nOQLhJKj4uO0wPYgkmFU=\\\\n-----END PUBLIC KEY-----\\\\n\\",\\"type\\":\\"EC\\"},\\"date\\":\\"2020-01-01T08:00:00.000Z\\"}],\\"updated\\":\\"2020-01-01T08:00:00.000Z\\",\\"version\\":\\"0\\",\\"algorithms\\":[\\"ES512\\"],\\"allowed\\":\\"true\\",\\"expires\\":\\"null\\",\\"namedCurve\\":\\"P-521\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"ES512\\",\\"privateKey\\":\\"-----BEGIN PRIVATE KEY-----\\\\nMIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3\\\\nmJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk\\\\n+f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM\\\\ngoTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8\\\\nQT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY\\\\nVQ==\\\\n-----END PRIVATE KEY-----\\\\n\\",\\"publicKey\\":\\"-----BEGIN PUBLIC KEY-----\\\\nMIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq\\\\nWM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ\\\\n1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg\\\\nOQLhJKj4uO0wPYgkmFU=\\\\n-----END PUBLIC KEY-----\\\\n\\",\\"type\\":\\"EC\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"created\\":\\"date\\",\\"events\\":[{\\"name\\":\\"string\\",\\"payload\\":{\\"id\\":\\"string\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"version\\":\\"number\\",\\"algorithms\\":[\\"string\\"],\\"allowed\\":\\"boolean\\",\\"expires\\":\\"null\\",\\"namedCurve\\":\\"string\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"},\\"date\\":\\"date\\"}],\\"updated\\":\\"date\\",\\"version\\":\\"number\\",\\"algorithms\\":[\\"string\\"],\\"allowed\\":\\"boolean\\",\\"expires\\":\\"null\\",\\"namedCurve\\":\\"string\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
+    "expiresInSeconds": undefined,
   },
 }
 `;
 
 exports[`KeyPairCache should find 1`] = `
-KeyPair {
-  "_algorithm": "algorithm",
-  "_allowed": true,
-  "_created": 2020-01-01T07:00:00.000Z,
-  "_events": Array [],
-  "_expires": 2020-01-01T07:00:00.000Z,
-  "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-  "_passphrase": "passphrase",
-  "_privateKey": "privateKey",
-  "_publicKey": "publicKey",
-  "_type": "type",
-  "_updated": 2020-01-01T07:00:00.000Z,
-  "_version": 0,
-}
-`;
-
-exports[`KeyPairCache should find 2`] = `
 Object {
-  "KeyPair::keystoreName::be3a62d1-24a0-401c-96dd-3aff95356811": Object {
-    "blob": "{\\"json\\":{\\"id\\":\\"be3a62d1-24a0-401c-96dd-3aff95356811\\",\\"version\\":\\"0\\",\\"created\\":\\"2020-01-01T07:00:00.000Z\\",\\"updated\\":\\"2020-01-01T07:00:00.000Z\\",\\"events\\":[],\\"allowed\\":\\"true\\",\\"algorithm\\":\\"algorithm\\",\\"expires\\":\\"2020-01-01T07:00:00.000Z\\",\\"passphrase\\":\\"passphrase\\",\\"privateKey\\":\\"privateKey\\",\\"publicKey\\":\\"publicKey\\",\\"type\\":\\"type\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"version\\":\\"number\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"events\\":[],\\"allowed\\":\\"boolean\\",\\"algorithm\\":\\"string\\",\\"expires\\":\\"date\\",\\"passphrase\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
-    "expiresInSeconds": null,
-  },
+  "algorithms": Array [
+    "ES512",
+  ],
+  "allowed": true,
+  "created": 2020-01-01T08:00:00.000Z,
+  "events": Array [
+    Object {
+      "date": 2020-01-01T08:00:00.000Z,
+      "name": "key_pair_created",
+      "payload": Object {
+        "algorithms": Array [
+          "ES512",
+        ],
+        "allowed": true,
+        "created": 2020-01-01T08:00:00.000Z,
+        "expires": null,
+        "id": "7531da89-12e9-403e-925a-5da49100635c",
+        "namedCurve": "P-521",
+        "passphrase": null,
+        "preferredAlgorithm": "ES512",
+        "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+        "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+        "type": "EC",
+        "updated": 2020-01-01T08:00:00.000Z,
+        "version": 0,
+      },
+    },
+  ],
+  "expires": null,
+  "id": "7531da89-12e9-403e-925a-5da49100635c",
+  "namedCurve": "P-521",
+  "passphrase": null,
+  "preferredAlgorithm": "ES512",
+  "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+  "type": "EC",
+  "updated": 2020-01-01T08:00:00.000Z,
+  "version": 0,
 }
 `;
 
 exports[`KeyPairCache should find many 1`] = `
 Array [
-  KeyPair {
-    "_algorithm": "algorithm",
-    "_allowed": true,
-    "_created": 2020-01-01T07:00:00.000Z,
-    "_events": Array [],
-    "_expires": 2020-01-01T07:00:00.000Z,
-    "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-    "_passphrase": "passphrase",
-    "_privateKey": "privateKey",
-    "_publicKey": "publicKey",
-    "_type": "type",
-    "_updated": 2020-01-01T07:00:00.000Z,
-    "_version": 0,
+  Object {
+    "algorithms": Array [
+      "ES512",
+    ],
+    "allowed": true,
+    "created": 2020-01-01T08:00:00.000Z,
+    "events": Array [
+      Object {
+        "date": 2020-01-01T08:00:00.000Z,
+        "name": "key_pair_created",
+        "payload": Object {
+          "algorithms": Array [
+            "ES512",
+          ],
+          "allowed": true,
+          "created": 2020-01-01T08:00:00.000Z,
+          "expires": null,
+          "id": "7531da89-12e9-403e-925a-5da49100635c",
+          "namedCurve": "P-521",
+          "passphrase": null,
+          "preferredAlgorithm": "ES512",
+          "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+          "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+          "type": "EC",
+          "updated": 2020-01-01T08:00:00.000Z,
+          "version": 0,
+        },
+      },
+    ],
+    "expires": null,
+    "id": "7531da89-12e9-403e-925a-5da49100635c",
+    "namedCurve": "P-521",
+    "passphrase": null,
+    "preferredAlgorithm": "ES512",
+    "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+    "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+    "type": "EC",
+    "updated": 2020-01-01T08:00:00.000Z,
+    "version": 0,
   },
-  KeyPair {
-    "_algorithm": "other",
-    "_allowed": true,
-    "_created": 2020-01-01T07:00:00.000Z,
-    "_events": Array [],
-    "_expires": null,
-    "_id": "e1ff05d4-12a5-42c0-9c70-43ead4ccaef6",
-    "_passphrase": null,
-    "_privateKey": "privateKey",
-    "_publicKey": "publicKey",
-    "_type": "type",
-    "_updated": 2020-01-01T07:00:00.000Z,
-    "_version": 0,
+  Object {
+    "algorithms": Array [
+      "RS512",
+    ],
+    "allowed": true,
+    "created": 2020-01-01T08:00:00.000Z,
+    "events": Array [
+      Object {
+        "date": 2020-01-01T08:00:00.000Z,
+        "name": "key_pair_created",
+        "payload": Object {
+          "algorithms": Array [
+            "RS512",
+          ],
+          "allowed": true,
+          "created": 2020-01-01T08:00:00.000Z,
+          "expires": null,
+          "id": "3f6ab288-7e0e-48b5-90ab-4684257ebe5e",
+          "namedCurve": null,
+          "passphrase": null,
+          "preferredAlgorithm": "RS512",
+          "privateKey": "-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-256-CBC,D4A7B3206D6701750C3BA26CC87E21D9
+
+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
+-----END RSA PRIVATE KEY-----
+",
+          "publicKey": "-----BEGIN RSA PUBLIC KEY-----
+MIICCgKCAgEAs7ydT9Ndt1Idx9NE2zMhAcecJGUcIlbWeXEtZJA7aKZDDhxYaEGB
+WZvX+GRndllnPrOgzoxukITGYvj88bnrGZVZX2ckjIVUR1NxDrhyMjqnn4yDz4UB
+Q3Zqt6Gz6DcE+Y9ro6kyhu01KPMyUlhDQAUdwpIJA3saUJ5KZj6ai4NTuXbLqzly
++3H5TMQY4WjrQwj/KRuq8LBEsR4YGaiaFZjHaf5n8+s2Gim/dDgAbIsZS+lGTwgx
+nigd7dKP9tG6q3GwNPNBSuuQh6rVbBKbmzBa5rO9SmeZ+HLUyClpzhZ+Hp8yOGAn
+qQFZZnokJ6dhxDEQcxPV2HUsYpi3oYSSomXsLgYSja1VT7CgeBchWj07ux6MnagM
+AB1+O7O2yzu0LYJc72BQOJaSIrBCh1FcPjM0KC1CPocux2JtqgDL/Td+V5HbLU9n
+ZQQoYDcrK3ozSne9ojioUWEwdBEzQmj9e3Wei87EyLe5bn/6tDbg17R7ZlVy2iVs
+IFziLHrv3VUIbESy5tTCdzK/qzFR0hlxejT12CTUSkN5eKmfz0pfzt+w8ldEfpws
+lBUcoS4sBIR3urpvx1EKM1xaUHfchhIKnY5KGTEM+5rJVwlDq+3lLcrJI3AErTAX
+gSR6fcZmKuI4nCfTKl3ykozcPwpEmfRgSBDHKwDJe6ZbK0sL4ScVookCAwEAAQ==
+-----END RSA PUBLIC KEY-----
+",
+          "type": "RSA",
+          "updated": 2020-01-01T08:00:00.000Z,
+          "version": 0,
+        },
+      },
+    ],
+    "expires": null,
+    "id": "3f6ab288-7e0e-48b5-90ab-4684257ebe5e",
+    "namedCurve": null,
+    "passphrase": null,
+    "preferredAlgorithm": "RS512",
+    "privateKey": "-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-256-CBC,D4A7B3206D6701750C3BA26CC87E21D9
+
+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
+-----END RSA PRIVATE KEY-----
+",
+    "publicKey": "-----BEGIN RSA PUBLIC KEY-----
+MIICCgKCAgEAs7ydT9Ndt1Idx9NE2zMhAcecJGUcIlbWeXEtZJA7aKZDDhxYaEGB
+WZvX+GRndllnPrOgzoxukITGYvj88bnrGZVZX2ckjIVUR1NxDrhyMjqnn4yDz4UB
+Q3Zqt6Gz6DcE+Y9ro6kyhu01KPMyUlhDQAUdwpIJA3saUJ5KZj6ai4NTuXbLqzly
++3H5TMQY4WjrQwj/KRuq8LBEsR4YGaiaFZjHaf5n8+s2Gim/dDgAbIsZS+lGTwgx
+nigd7dKP9tG6q3GwNPNBSuuQh6rVbBKbmzBa5rO9SmeZ+HLUyClpzhZ+Hp8yOGAn
+qQFZZnokJ6dhxDEQcxPV2HUsYpi3oYSSomXsLgYSja1VT7CgeBchWj07ux6MnagM
+AB1+O7O2yzu0LYJc72BQOJaSIrBCh1FcPjM0KC1CPocux2JtqgDL/Td+V5HbLU9n
+ZQQoYDcrK3ozSne9ojioUWEwdBEzQmj9e3Wei87EyLe5bn/6tDbg17R7ZlVy2iVs
+IFziLHrv3VUIbESy5tTCdzK/qzFR0hlxejT12CTUSkN5eKmfz0pfzt+w8ldEfpws
+lBUcoS4sBIR3urpvx1EKM1xaUHfchhIKnY5KGTEM+5rJVwlDq+3lLcrJI3AErTAX
+gSR6fcZmKuI4nCfTKl3ykozcPwpEmfRgSBDHKwDJe6ZbK0sL4ScVookCAwEAAQ==
+-----END RSA PUBLIC KEY-----
+",
+    "type": "RSA",
+    "updated": 2020-01-01T08:00:00.000Z,
+    "version": 0,
   },
 ]
 `;
 
-exports[`KeyPairCache should find many 2`] = `
-Object {
-  "KeyPair::keystoreName::be3a62d1-24a0-401c-96dd-3aff95356811": Object {
-    "blob": "{\\"json\\":{\\"id\\":\\"be3a62d1-24a0-401c-96dd-3aff95356811\\",\\"version\\":\\"0\\",\\"created\\":\\"2020-01-01T07:00:00.000Z\\",\\"updated\\":\\"2020-01-01T07:00:00.000Z\\",\\"events\\":[],\\"allowed\\":\\"true\\",\\"algorithm\\":\\"algorithm\\",\\"expires\\":\\"2020-01-01T07:00:00.000Z\\",\\"passphrase\\":\\"passphrase\\",\\"privateKey\\":\\"privateKey\\",\\"publicKey\\":\\"publicKey\\",\\"type\\":\\"type\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"version\\":\\"number\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"events\\":[],\\"allowed\\":\\"boolean\\",\\"algorithm\\":\\"string\\",\\"expires\\":\\"date\\",\\"passphrase\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
-    "expiresInSeconds": null,
-  },
-  "KeyPair::keystoreName::e1ff05d4-12a5-42c0-9c70-43ead4ccaef6": Object {
-    "blob": "{\\"json\\":{\\"id\\":\\"e1ff05d4-12a5-42c0-9c70-43ead4ccaef6\\",\\"version\\":\\"0\\",\\"created\\":\\"2020-01-01T07:00:00.000Z\\",\\"updated\\":\\"2020-01-01T07:00:00.000Z\\",\\"events\\":[],\\"allowed\\":\\"true\\",\\"algorithm\\":\\"other\\",\\"expires\\":\\"null\\",\\"passphrase\\":\\"null\\",\\"privateKey\\":\\"privateKey\\",\\"publicKey\\":\\"publicKey\\",\\"type\\":\\"type\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"version\\":\\"number\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"events\\":[],\\"allowed\\":\\"boolean\\",\\"algorithm\\":\\"string\\",\\"expires\\":\\"null\\",\\"passphrase\\":\\"null\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
-    "expiresInSeconds": null,
-  },
-}
-`;
-
 exports[`KeyPairCache should remove 1`] = `
 Object {
-  "KeyPair::keystoreName::be3a62d1-24a0-401c-96dd-3aff95356811": undefined,
+  "KeyPair::keystoreName::7531da89-12e9-403e-925a-5da49100635c": undefined,
 }
 `;
 
 exports[`KeyPairCache should update 1`] = `
-KeyPair {
-  "_algorithm": "algorithm",
-  "_allowed": true,
-  "_created": 2020-01-01T07:00:00.000Z,
-  "_events": Array [],
-  "_expires": 2020-01-01T07:00:00.000Z,
-  "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-  "_passphrase": "passphrase",
-  "_privateKey": "privateKey",
-  "_publicKey": "publicKey",
-  "_type": "type",
-  "_updated": 2020-01-01T07:00:00.000Z,
-  "_version": 0,
-}
-`;
-
-exports[`KeyPairCache should update 2`] = `
 Object {
-  "KeyPair::keystoreName::be3a62d1-24a0-401c-96dd-3aff95356811": Object {
-    "blob": "{\\"json\\":{\\"id\\":\\"be3a62d1-24a0-401c-96dd-3aff95356811\\",\\"version\\":\\"0\\",\\"created\\":\\"2020-01-01T07:00:00.000Z\\",\\"updated\\":\\"2020-01-01T07:00:00.000Z\\",\\"events\\":[],\\"allowed\\":\\"true\\",\\"algorithm\\":\\"algorithm\\",\\"expires\\":\\"2020-01-01T07:00:00.000Z\\",\\"passphrase\\":\\"passphrase\\",\\"privateKey\\":\\"privateKey\\",\\"publicKey\\":\\"publicKey\\",\\"type\\":\\"type\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"version\\":\\"number\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"events\\":[],\\"allowed\\":\\"boolean\\",\\"algorithm\\":\\"string\\",\\"expires\\":\\"date\\",\\"passphrase\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
-    "expiresInSeconds": null,
+  "KeyPair::keystoreName::7531da89-12e9-403e-925a-5da49100635c": Object {
+    "blob": "{\\"json\\":{\\"id\\":\\"7531da89-12e9-403e-925a-5da49100635c\\",\\"created\\":\\"2020-01-01T08:00:00.000Z\\",\\"events\\":[{\\"name\\":\\"key_pair_created\\",\\"payload\\":{\\"id\\":\\"7531da89-12e9-403e-925a-5da49100635c\\",\\"created\\":\\"2020-01-01T08:00:00.000Z\\",\\"updated\\":\\"2020-01-01T08:00:00.000Z\\",\\"version\\":\\"0\\",\\"algorithms\\":[\\"ES512\\"],\\"allowed\\":\\"true\\",\\"expires\\":\\"null\\",\\"namedCurve\\":\\"P-521\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"ES512\\",\\"privateKey\\":\\"-----BEGIN PRIVATE KEY-----\\\\nMIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3\\\\nmJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk\\\\n+f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM\\\\ngoTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8\\\\nQT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY\\\\nVQ==\\\\n-----END PRIVATE KEY-----\\\\n\\",\\"publicKey\\":\\"-----BEGIN PUBLIC KEY-----\\\\nMIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq\\\\nWM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ\\\\n1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg\\\\nOQLhJKj4uO0wPYgkmFU=\\\\n-----END PUBLIC KEY-----\\\\n\\",\\"type\\":\\"EC\\"},\\"date\\":\\"2020-01-01T08:00:00.000Z\\"},{\\"name\\":\\"key_pair_expires_changed\\",\\"payload\\":{\\"expires\\":\\"2099-01-01T08:00:00.000Z\\"},\\"date\\":\\"2020-01-01T08:00:00.000Z\\"}],\\"updated\\":\\"2020-01-01T08:00:00.000Z\\",\\"version\\":\\"0\\",\\"algorithms\\":[\\"ES512\\"],\\"allowed\\":\\"true\\",\\"expires\\":\\"2099-01-01T08:00:00.000Z\\",\\"namedCurve\\":\\"P-521\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"ES512\\",\\"privateKey\\":\\"-----BEGIN PRIVATE KEY-----\\\\nMIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3\\\\nmJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk\\\\n+f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM\\\\ngoTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8\\\\nQT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY\\\\nVQ==\\\\n-----END PRIVATE KEY-----\\\\n\\",\\"publicKey\\":\\"-----BEGIN PUBLIC KEY-----\\\\nMIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq\\\\nWM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ\\\\n1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg\\\\nOQLhJKj4uO0wPYgkmFU=\\\\n-----END PUBLIC KEY-----\\\\n\\",\\"type\\":\\"EC\\"},\\"meta\\":{\\"id\\":\\"string\\",\\"created\\":\\"date\\",\\"events\\":[{\\"name\\":\\"string\\",\\"payload\\":{\\"id\\":\\"string\\",\\"created\\":\\"date\\",\\"updated\\":\\"date\\",\\"version\\":\\"number\\",\\"algorithms\\":[\\"string\\"],\\"allowed\\":\\"boolean\\",\\"expires\\":\\"null\\",\\"namedCurve\\":\\"string\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"},\\"date\\":\\"date\\"},{\\"name\\":\\"string\\",\\"payload\\":{\\"expires\\":\\"date\\"},\\"date\\":\\"date\\"}],\\"updated\\":\\"date\\",\\"version\\":\\"number\\",\\"algorithms\\":[\\"string\\"],\\"allowed\\":\\"boolean\\",\\"expires\\":\\"date\\",\\"namedCurve\\":\\"string\\",\\"passphrase\\":\\"null\\",\\"preferredAlgorithm\\":\\"string\\",\\"privateKey\\":\\"string\\",\\"publicKey\\":\\"string\\",\\"type\\":\\"string\\"}}",
+    "expiresInSeconds": undefined,
   },
 }
 `;

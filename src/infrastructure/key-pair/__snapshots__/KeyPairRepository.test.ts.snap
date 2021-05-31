@@ -1,67 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KeyPairRepository should create 1`] = `
-KeyPair {
-  "_algorithm": "algorithm",
-  "_allowed": true,
-  "_created": 2020-01-01T07:00:00.000Z,
-  "_events": Array [
-    Object {
-      "date": 2020-01-01T07:00:00.000Z,
-      "name": "key_pair_created",
-      "payload": Object {
-        "algorithm": "algorithm",
-        "allowed": true,
-        "expires": 2020-01-01T07:00:00.000Z,
-        "passphrase": "passphrase",
-        "privateKey": "privateKey",
-        "publicKey": "publicKey",
-        "type": "type",
-      },
-    },
-  ],
-  "_expires": 2020-01-01T07:00:00.000Z,
-  "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-  "_passphrase": "passphrase",
-  "_privateKey": "privateKey",
-  "_publicKey": "publicKey",
-  "_type": "type",
-  "_updated": 2020-01-01T07:00:00.000Z,
-  "_version": 0,
-}
-`;
-
-exports[`KeyPairRepository should create 2`] = `
 Object {
   "databaseName": Object {
     "key_pair": Object {
       "data": Array [
         Object {
-          "algorithm": "algorithm",
+          "algorithms": Array [
+            "ES512",
+          ],
           "allowed": true,
-          "created": 2020-01-01T07:00:00.000Z,
+          "created": 2020-01-01T08:00:00.000Z,
           "events": Array [
             Object {
-              "date": 2020-01-01T07:00:00.000Z,
+              "date": 2020-01-01T08:00:00.000Z,
               "name": "key_pair_created",
               "payload": Object {
-                "algorithm": "algorithm",
+                "algorithms": Array [
+                  "ES512",
+                ],
                 "allowed": true,
-                "expires": 2020-01-01T07:00:00.000Z,
-                "passphrase": "passphrase",
-                "privateKey": "privateKey",
-                "publicKey": "publicKey",
-                "type": "type",
+                "created": 2020-01-01T08:00:00.000Z,
+                "expires": null,
+                "id": "7531da89-12e9-403e-925a-5da49100635c",
+                "namedCurve": "P-521",
+                "passphrase": null,
+                "preferredAlgorithm": "ES512",
+                "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+                "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+                "type": "EC",
+                "updated": 2020-01-01T08:00:00.000Z,
+                "version": 0,
               },
             },
           ],
-          "expires": 2020-01-01T07:00:00.000Z,
-          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-          "passphrase": "passphrase",
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
-          "updated": 2020-01-01T07:00:00.000Z,
+          "expires": null,
+          "id": "7531da89-12e9-403e-925a-5da49100635c",
+          "namedCurve": "P-521",
+          "passphrase": null,
+          "preferredAlgorithm": "ES512",
+          "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+          "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+          "type": "EC",
+          "updated": 2020-01-01T08:00:00.000Z,
           "version": 0,
         },
       ],
@@ -81,221 +90,215 @@ Object {
 `;
 
 exports[`KeyPairRepository should find 1`] = `
-KeyPair {
-  "_algorithm": "algorithm",
-  "_allowed": true,
-  "_created": 2020-01-01T07:00:00.000Z,
-  "_events": Array [
+Object {
+  "algorithms": Array [
+    "ES512",
+  ],
+  "allowed": true,
+  "created": 2020-01-01T08:00:00.000Z,
+  "events": Array [
     Object {
-      "date": 2020-01-01T07:00:00.000Z,
+      "date": 2020-01-01T08:00:00.000Z,
       "name": "key_pair_created",
       "payload": Object {
-        "algorithm": "algorithm",
+        "algorithms": Array [
+          "ES512",
+        ],
         "allowed": true,
-        "expires": 2020-01-01T07:00:00.000Z,
-        "passphrase": "passphrase",
-        "privateKey": "privateKey",
-        "publicKey": "publicKey",
-        "type": "type",
+        "created": 2020-01-01T08:00:00.000Z,
+        "expires": null,
+        "id": "7531da89-12e9-403e-925a-5da49100635c",
+        "namedCurve": "P-521",
+        "passphrase": null,
+        "preferredAlgorithm": "ES512",
+        "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+        "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+        "type": "EC",
+        "updated": 2020-01-01T08:00:00.000Z,
+        "version": 0,
       },
     },
   ],
-  "_expires": 2020-01-01T07:00:00.000Z,
-  "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-  "_passphrase": "passphrase",
-  "_privateKey": "privateKey",
-  "_publicKey": "publicKey",
-  "_type": "type",
-  "_updated": 2020-01-01T07:00:00.000Z,
-  "_version": 0,
-}
-`;
-
-exports[`KeyPairRepository should find 2`] = `
-Object {
-  "databaseName": Object {
-    "key_pair": Object {
-      "data": Array [
-        Object {
-          "algorithm": "algorithm",
-          "allowed": true,
-          "created": 2020-01-01T07:00:00.000Z,
-          "events": Array [
-            Object {
-              "date": 2020-01-01T07:00:00.000Z,
-              "name": "key_pair_created",
-              "payload": Object {
-                "algorithm": "algorithm",
-                "allowed": true,
-                "expires": 2020-01-01T07:00:00.000Z,
-                "passphrase": "passphrase",
-                "privateKey": "privateKey",
-                "publicKey": "publicKey",
-                "type": "type",
-              },
-            },
-          ],
-          "expires": 2020-01-01T07:00:00.000Z,
-          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-          "passphrase": "passphrase",
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
-          "updated": 2020-01-01T07:00:00.000Z,
-          "version": 0,
-        },
-      ],
-      "indices": Array [
-        Object {
-          "index": Object {
-            "id": 1,
-          },
-          "options": Object {
-            "unique": true,
-          },
-        },
-      ],
-    },
-  },
+  "expires": null,
+  "id": "7531da89-12e9-403e-925a-5da49100635c",
+  "namedCurve": "P-521",
+  "passphrase": null,
+  "preferredAlgorithm": "ES512",
+  "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+  "type": "EC",
+  "updated": 2020-01-01T08:00:00.000Z,
+  "version": 0,
 }
 `;
 
 exports[`KeyPairRepository should find many 1`] = `
 Array [
-  KeyPair {
-    "_algorithm": "algorithm",
-    "_allowed": true,
-    "_created": 2020-01-01T07:00:00.000Z,
-    "_events": Array [
-      Object {
-        "date": 2020-01-01T07:00:00.000Z,
-        "name": "key_pair_created",
-        "payload": Object {
-          "algorithm": "algorithm",
-          "allowed": true,
-          "expires": 2020-01-01T07:00:00.000Z,
-          "passphrase": "passphrase",
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
-        },
-      },
+  Object {
+    "algorithms": Array [
+      "ES512",
     ],
-    "_expires": 2020-01-01T07:00:00.000Z,
-    "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-    "_passphrase": "passphrase",
-    "_privateKey": "privateKey",
-    "_publicKey": "publicKey",
-    "_type": "type",
-    "_updated": 2020-01-01T07:00:00.000Z,
-    "_version": 0,
-  },
-  KeyPair {
-    "_algorithm": "other",
-    "_allowed": true,
-    "_created": 2020-01-01T07:00:00.000Z,
-    "_events": Array [
+    "allowed": true,
+    "created": 2020-01-01T08:00:00.000Z,
+    "events": Array [
       Object {
-        "date": 2020-01-01T07:00:00.000Z,
+        "date": 2020-01-01T08:00:00.000Z,
         "name": "key_pair_created",
         "payload": Object {
-          "algorithm": "other",
+          "algorithms": Array [
+            "ES512",
+          ],
           "allowed": true,
+          "created": 2020-01-01T08:00:00.000Z,
           "expires": null,
+          "id": "7531da89-12e9-403e-925a-5da49100635c",
+          "namedCurve": "P-521",
           "passphrase": null,
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
+          "preferredAlgorithm": "ES512",
+          "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+          "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+          "type": "EC",
+          "updated": 2020-01-01T08:00:00.000Z,
+          "version": 0,
         },
       },
     ],
-    "_expires": null,
-    "_id": "e1ff05d4-12a5-42c0-9c70-43ead4ccaef6",
-    "_passphrase": null,
-    "_privateKey": "privateKey",
-    "_publicKey": "publicKey",
-    "_type": "type",
-    "_updated": 2020-01-01T07:00:00.000Z,
-    "_version": 0,
+    "expires": null,
+    "id": "7531da89-12e9-403e-925a-5da49100635c",
+    "namedCurve": "P-521",
+    "passphrase": null,
+    "preferredAlgorithm": "ES512",
+    "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+    "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+    "type": "EC",
+    "updated": 2020-01-01T08:00:00.000Z,
+    "version": 0,
+  },
+  Object {
+    "algorithms": Array [
+      "ES512",
+    ],
+    "allowed": true,
+    "created": 2020-01-01T08:00:00.000Z,
+    "events": Array [
+      Object {
+        "date": 2020-01-01T08:00:00.000Z,
+        "name": "key_pair_created",
+        "payload": Object {
+          "algorithms": Array [
+            "ES512",
+          ],
+          "allowed": true,
+          "created": 2020-01-01T08:00:00.000Z,
+          "expires": null,
+          "id": "7531da89-12e9-403e-925a-5da49100635c",
+          "namedCurve": "P-521",
+          "passphrase": null,
+          "preferredAlgorithm": "ES512",
+          "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+          "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+          "type": "EC",
+          "updated": 2020-01-01T08:00:00.000Z,
+          "version": 0,
+        },
+      },
+    ],
+    "expires": null,
+    "id": "7531da89-12e9-403e-925a-5da49100635c",
+    "namedCurve": "P-521",
+    "passphrase": null,
+    "preferredAlgorithm": "ES512",
+    "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+    "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+    "type": "EC",
+    "updated": 2020-01-01T08:00:00.000Z,
+    "version": 0,
   },
 ]
-`;
-
-exports[`KeyPairRepository should find many 2`] = `
-Object {
-  "databaseName": Object {
-    "key_pair": Object {
-      "data": Array [
-        Object {
-          "algorithm": "algorithm",
-          "allowed": true,
-          "created": 2020-01-01T07:00:00.000Z,
-          "events": Array [
-            Object {
-              "date": 2020-01-01T07:00:00.000Z,
-              "name": "key_pair_created",
-              "payload": Object {
-                "algorithm": "algorithm",
-                "allowed": true,
-                "expires": 2020-01-01T07:00:00.000Z,
-                "passphrase": "passphrase",
-                "privateKey": "privateKey",
-                "publicKey": "publicKey",
-                "type": "type",
-              },
-            },
-          ],
-          "expires": 2020-01-01T07:00:00.000Z,
-          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-          "passphrase": "passphrase",
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
-          "updated": 2020-01-01T07:00:00.000Z,
-          "version": 0,
-        },
-        Object {
-          "algorithm": "other",
-          "allowed": true,
-          "created": 2020-01-01T07:00:00.000Z,
-          "events": Array [
-            Object {
-              "date": 2020-01-01T07:00:00.000Z,
-              "name": "key_pair_created",
-              "payload": Object {
-                "algorithm": "other",
-                "allowed": true,
-                "expires": null,
-                "passphrase": null,
-                "privateKey": "privateKey",
-                "publicKey": "publicKey",
-                "type": "type",
-              },
-            },
-          ],
-          "expires": null,
-          "id": "e1ff05d4-12a5-42c0-9c70-43ead4ccaef6",
-          "passphrase": null,
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
-          "updated": 2020-01-01T07:00:00.000Z,
-          "version": 0,
-        },
-      ],
-      "indices": Array [
-        Object {
-          "index": Object {
-            "id": 1,
-          },
-          "options": Object {
-            "unique": true,
-          },
-        },
-      ],
-    },
-  },
-}
 `;
 
 exports[`KeyPairRepository should remove 1`] = `
@@ -319,67 +322,83 @@ Object {
 `;
 
 exports[`KeyPairRepository should update 1`] = `
-KeyPair {
-  "_algorithm": "algorithm",
-  "_allowed": true,
-  "_created": 2020-01-01T07:00:00.000Z,
-  "_events": Array [
-    Object {
-      "date": 2020-01-01T07:00:00.000Z,
-      "name": "key_pair_created",
-      "payload": Object {
-        "algorithm": "algorithm",
-        "allowed": true,
-        "expires": 2020-01-01T07:00:00.000Z,
-        "passphrase": "passphrase",
-        "privateKey": "privateKey",
-        "publicKey": "publicKey",
-        "type": "type",
-      },
-    },
-  ],
-  "_expires": 2020-01-01T07:00:00.000Z,
-  "_id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-  "_passphrase": "passphrase",
-  "_privateKey": "privateKey",
-  "_publicKey": "publicKey",
-  "_type": "type",
-  "_updated": 2020-01-01T07:00:00.000Z,
-  "_version": 1,
-}
-`;
-
-exports[`KeyPairRepository should update 2`] = `
 Object {
   "databaseName": Object {
     "key_pair": Object {
       "data": Array [
         Object {
-          "algorithm": "algorithm",
+          "algorithms": Array [
+            "ES512",
+          ],
           "allowed": true,
-          "created": 2020-01-01T07:00:00.000Z,
+          "created": 2020-01-01T08:00:00.000Z,
           "events": Array [
             Object {
-              "date": 2020-01-01T07:00:00.000Z,
+              "date": 2020-01-01T08:00:00.000Z,
               "name": "key_pair_created",
               "payload": Object {
-                "algorithm": "algorithm",
+                "algorithms": Array [
+                  "ES512",
+                ],
                 "allowed": true,
-                "expires": 2020-01-01T07:00:00.000Z,
-                "passphrase": "passphrase",
-                "privateKey": "privateKey",
-                "publicKey": "publicKey",
-                "type": "type",
+                "created": 2020-01-01T08:00:00.000Z,
+                "expires": null,
+                "id": "7531da89-12e9-403e-925a-5da49100635c",
+                "namedCurve": "P-521",
+                "passphrase": null,
+                "preferredAlgorithm": "ES512",
+                "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+                "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+                "type": "EC",
+                "updated": 2020-01-01T08:00:00.000Z,
+                "version": 0,
+              },
+            },
+            Object {
+              "date": 2020-01-01T08:00:00.000Z,
+              "name": "key_pair_expires_changed",
+              "payload": Object {
+                "expires": 2020-01-01T10:00:00.000Z,
               },
             },
           ],
-          "expires": 2020-01-01T07:00:00.000Z,
-          "id": "be3a62d1-24a0-401c-96dd-3aff95356811",
-          "passphrase": "passphrase",
-          "privateKey": "privateKey",
-          "publicKey": "publicKey",
-          "type": "type",
-          "updated": 2020-01-01T07:00:00.000Z,
+          "expires": 2020-01-01T10:00:00.000Z,
+          "id": "7531da89-12e9-403e-925a-5da49100635c",
+          "namedCurve": "P-521",
+          "passphrase": null,
+          "preferredAlgorithm": "ES512",
+          "privateKey": "-----BEGIN PRIVATE KEY-----
+MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBGma7xGZpaAngFXf3
+mJF3IxZfDpI+6wU564K+eehxX104v6dZetjSfMx0rvsYX/s6cO2P3GE7R95VxWEk
++f4EX0qhgYkDgYYABAB8cBfDwCi41G4kVW4V3Y86nIMMCypYzfO8gYjpS091lxkM
+goTRS3LM1p65KQfwBolrWIdVrbbOILASf06fQsHw5gEt4snVuMBO+LS6pesX9vA8
+QT1LjX75Xq2InnLY1VToeNmxkuM+oDZgqHOYwzfUhu+zZaA5AuEkqPi47TA9iCSY
+VQ==
+-----END PRIVATE KEY-----
+",
+          "publicKey": "-----BEGIN PUBLIC KEY-----
+MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAfHAXw8AouNRuJFVuFd2POpyDDAsq
+WM3zvIGI6UtPdZcZDIKE0UtyzNaeuSkH8AaJa1iHVa22ziCwEn9On0LB8OYBLeLJ
+1bjATvi0uqXrF/bwPEE9S41++V6tiJ5y2NVU6HjZsZLjPqA2YKhzmMM31Ibvs2Wg
+OQLhJKj4uO0wPYgkmFU=
+-----END PUBLIC KEY-----
+",
+          "type": "EC",
+          "updated": 2020-01-01T08:00:00.000Z,
           "version": 1,
         },
       ],
