@@ -18,7 +18,7 @@ export class WebKeyHandler {
   private readonly axios: Axios;
   private readonly logger: Logger;
 
-  constructor(options: IWebKeyHandlerOptions) {
+  public constructor(options: IWebKeyHandlerOptions) {
     this.logger = options.logger.createChildLogger(["WebKeyHandler"]);
     this.axios = new Axios({
       baseUrl: options.baseUrl,

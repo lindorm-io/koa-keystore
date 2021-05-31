@@ -3,7 +3,7 @@ import { IRepositoryOptions, RepositoryBase } from "@lindorm-io/mongo";
 import { indices } from "./indices";
 
 export class KeyPairRepository extends RepositoryBase<IKeyPairAttributes, KeyPair> {
-  constructor(options: IRepositoryOptions) {
+  public constructor(options: IRepositoryOptions) {
     super({
       collectionName: "key_pair",
       db: options.db,

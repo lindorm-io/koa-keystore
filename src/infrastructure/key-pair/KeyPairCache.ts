@@ -6,7 +6,7 @@ interface IOptions extends ICacheOptions {
 }
 
 export class KeyPairCache extends CacheBase<IKeyPairAttributes, KeyPair> {
-  constructor(options: IOptions) {
+  public constructor(options: IOptions) {
     const entityName = options.keystoreName ? `KeyPair::${options.keystoreName}` : "KeyPair";
 
     super({
