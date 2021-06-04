@@ -24,7 +24,7 @@ describe("keyPairCacheMiddleware", () => {
       keyPairCacheMiddleware({
         keystoreName: "keystoreName",
       })(ctx, next),
-    ).resolves.toBe(undefined);
+    ).resolves.toBeUndefined();
 
     expect(ctx.cache.keyPair.keystoreName).toStrictEqual(expect.any(KeyPairCache));
     expect(ctx.metrics.cache).toStrictEqual(expect.any(Number));

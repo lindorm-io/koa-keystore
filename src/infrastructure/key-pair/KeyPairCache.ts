@@ -1,12 +1,12 @@
-import { CacheBase, ICacheOptions } from "@lindorm-io/redis";
-import { IKeyPairAttributes, KeyPair } from "@lindorm-io/key-pair";
+import { CacheBase, CacheOptions } from "@lindorm-io/redis";
+import { KeyPairAttributes, KeyPair } from "@lindorm-io/key-pair";
 
-interface IOptions extends ICacheOptions {
+interface Options extends CacheOptions {
   keystoreName: string;
 }
 
-export class KeyPairCache extends CacheBase<IKeyPairAttributes, KeyPair> {
-  public constructor(options: IOptions) {
+export class KeyPairCache extends CacheBase<KeyPairAttributes, KeyPair> {
+  public constructor(options: Options) {
     const entityName = options.keystoreName ? `KeyPair::${options.keystoreName}` : "KeyPair";
 
     super({
@@ -17,7 +17,7 @@ export class KeyPairCache extends CacheBase<IKeyPairAttributes, KeyPair> {
     });
   }
 
-  protected createEntity(data: IKeyPairAttributes): KeyPair {
+  protected createEntity(data: KeyPairAttributes): KeyPair {
     return new KeyPair(data);
   }
 
@@ -37,7 +37,7 @@ export class KeyPairCache extends CacheBase<IKeyPairAttributes, KeyPair> {
     return super.findAll();
   }
 
-  public async findMany(filter: Partial<IKeyPairAttributes>): Promise<Array<KeyPair>> {
+  public async findMany(filter: Partial<KeyPairAttributes>): Promise<Array<KeyPair>> {
     return super.findMany(filter);
   }
 

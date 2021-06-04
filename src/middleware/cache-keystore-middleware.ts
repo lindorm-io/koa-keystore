@@ -1,9 +1,9 @@
-import { DefaultState, Middleware } from "@lindorm-io/koa";
-import { IKeystoreMiddlewareOptions, IKoaCacheKeystoreContext } from "../typing";
+import { Middleware } from "@lindorm-io/koa";
+import { KeystoreMiddlewareOptions, CacheKeystoreContext } from "../typing";
 import { Keystore } from "@lindorm-io/key-pair";
 
 export const cacheKeystoreMiddleware =
-  (options: IKeystoreMiddlewareOptions): Middleware<DefaultState, IKoaCacheKeystoreContext> =>
+  (options: KeystoreMiddlewareOptions): Middleware<CacheKeystoreContext> =>
   async (ctx, next): Promise<void> => {
     const start = Date.now();
 

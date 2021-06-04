@@ -47,7 +47,7 @@ describe("KeyPairRepository", () => {
   test("should remove", async () => {
     await repository.create(keyPair);
 
-    await expect(repository.remove(keyPair)).resolves.toBe(undefined);
+    await expect(repository.remove(keyPair)).resolves.toBeUndefined();
     await expect(repository.find({ id: keyPair.id })).rejects.toStrictEqual(expect.any(RepositoryEntityNotFoundError));
     expect(inMemoryStore).toMatchSnapshot();
   });

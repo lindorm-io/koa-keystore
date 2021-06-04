@@ -1,10 +1,10 @@
-import { DefaultState, Middleware } from "@lindorm-io/koa";
-import { IJsonWebKeySetsMiddlewareOptions, IKoaKeystoreContext } from "../typing";
+import { Middleware } from "@lindorm-io/koa";
+import { JWKSMiddlewareOptions, KeystoreContext } from "../typing";
 import { Keystore } from "@lindorm-io/key-pair";
 import { WebKeyHandler } from "../class";
 
 export const jwksKeystoreMiddleware =
-  (options: IJsonWebKeySetsMiddlewareOptions): Middleware<DefaultState, IKoaKeystoreContext> =>
+  (options: JWKSMiddlewareOptions): Middleware<KeystoreContext> =>
   async (ctx, next): Promise<void> => {
     const start = Date.now();
 

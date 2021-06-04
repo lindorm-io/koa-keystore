@@ -1,8 +1,8 @@
-export interface IKeystoreMiddlewareOptions {
+export interface KeystoreMiddlewareOptions {
   keystoreName: string;
 }
 
-export interface IJsonWebKeySetsMiddlewareOptions {
+export interface JWKSMiddlewareOptions {
   baseUrl: string;
   keystoreName: string;
 }

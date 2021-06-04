@@ -1,16 +1,16 @@
-import { IKoaAppContext } from "@lindorm-io/koa";
+import { KoaContext } from "@lindorm-io/koa";
 import { KeyPairCache, KeyPairRepository } from "../infrastructure";
 import { Keystore } from "@lindorm-io/key-pair";
 import { MongoConnection } from "@lindorm-io/mongo";
 import { RedisConnection } from "@lindorm-io/redis";
 
-export interface IKoaKeystoreContext extends IKoaAppContext {
+export interface KeystoreContext extends KoaContext {
   keystore: {
     [key: string]: Keystore;
   };
 }
 
-export interface IKoaRepositoryKeystoreContext extends IKoaKeystoreContext {
+export interface RepositoryKeystoreContext extends KeystoreContext {
   client: {
     mongo: MongoConnection;
   };
@@ -19,7 +19,7 @@ export interface IKoaRepositoryKeystoreContext extends IKoaKeystoreContext {
   };
 }
 
-export interface IKoaCacheKeystoreContext extends IKoaKeystoreContext {
+export interface CacheKeystoreContext extends KeystoreContext {
   client: {
     redis: RedisConnection;
   };

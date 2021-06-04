@@ -1,18 +1,22 @@
-import { IKeyPairAttributes, IKeyPairOptions, KeyPair } from "@lindorm-io/key-pair";
-import { IRepositoryOptions, RepositoryBase } from "@lindorm-io/mongo";
-import { indices } from "./indices";
+import { KeyPairAttributes, KeyPair } from "@lindorm-io/key-pair";
+import { RepositoryOptions, RepositoryBase } from "@lindorm-io/mongo";
 
-export class KeyPairRepository extends RepositoryBase<IKeyPairAttributes, KeyPair> {
-  public constructor(options: IRepositoryOptions) {
+export class KeyPairRepository extends RepositoryBase<KeyPairAttributes, KeyPair> {
+  public constructor(options: RepositoryOptions) {
     super({
       collectionName: "key_pair",
       db: options.db,
       logger: options.logger,
-      indices,
+      indices: [
+        {
+          index: { id: 1 },
+          options: { unique: true },
+        },
+      ],
     });
   }
 
-  protected createEntity(data: IKeyPairAttributes): KeyPair {
+  protected createEntity(data: KeyPairAttributes): KeyPair {
     return new KeyPair(data);
   }
 
@@ -24,15 +28,15 @@ export class KeyPairRepository extends RepositoryBase<IKeyPairAttributes, KeyPai
     return super.update(entity);
   }
 
-  public async find(filter: Partial<IKeyPairAttributes>): Promise<KeyPair> {
+  public async find(filter: Partial<KeyPairAttributes>): Promise<KeyPair> {
     return super.find(filter);
   }
 
-  public async findMany(filter: Partial<IKeyPairAttributes>): Promise<Array<KeyPair>> {
+  public async findMany(filter: Partial<KeyPairAttributes>): Promise<Array<KeyPair>> {
     return super.findMany(filter);
   }
 
-  public async findOrCreate(filter: Partial<IKeyPairOptions>): Promise<KeyPair> {
+  public async findOrCreate(filter: Partial<KeyPairAttributes>): Promise<KeyPair> {
     return super.findOrCreate(filter);
   }
 
@@ -40,7 +44,7 @@ export class KeyPairRepository extends RepositoryBase<IKeyPairAttributes, KeyPai
     await super.remove(entity);
   }
 
-  public async removeMany(filter: Partial<IKeyPairAttributes>): Promise<void> {
+  public async removeMany(filter: Partial<KeyPairAttributes>): Promise<void> {
     await super.removeMany(filter);
   }
 }

@@ -1,5 +1,5 @@
 import { Axios } from "@lindorm-io/axios";
-import { IJwk } from "@lindorm-io/key-pair";
+import { JWK } from "@lindorm-io/key-pair";
 import { KeyPair } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
 import { WebKeyHandlerError } from "../error";
@@ -10,8 +10,8 @@ interface IWebKeyHandlerOptions {
   name: string;
 }
 
-interface IResponseData {
-  keys: Array<IJwk>;
+interface AxiosResponse {
+  keys: Array<JWK>;
 }
 
 export class WebKeyHandler {
@@ -31,9 +31,8 @@ export class WebKeyHandler {
     const start = Date.now();
 
     try {
-      const response = await this.axios.get("/.well-known/jwks.json");
-      const data = response.data as unknown as IResponseData;
-      const keys = data.keys;
+      const response = await this.axios.get<AxiosResponse>("/.well-known/jwks.json");
+      const keys = response?.data?.keys;
 
       if (!keys || !keys.length) {
         throw new Error("No keys could be found");

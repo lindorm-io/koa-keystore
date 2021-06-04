@@ -26,7 +26,7 @@ describe("repositoryKeystoreMiddleware", () => {
       repositoryKeystoreMiddleware({
         keystoreName: "keystoreName",
       })(ctx, next),
-    ).resolves.toBe(undefined);
+    ).resolves.toBeUndefined();
 
     expect(ctx.keystore).toMatchSnapshot();
     expect(ctx.metrics.keystore).toStrictEqual(expect.any(Number));
