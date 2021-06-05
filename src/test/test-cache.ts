@@ -2,13 +2,13 @@ import { KeyPairCache } from "../infrastructure";
 import { getTestRedis } from "./test-redis";
 import { logger } from "./test-logger";
 
-export interface IGetTestCacheData {
+interface Data {
   keyPair: {
     [key: string]: KeyPairCache;
   };
 }
 
-export const getTestCache = async (): Promise<IGetTestCacheData> => {
+export const getTestCache = async (): Promise<Data> => {
   const redis = await getTestRedis();
   const client = redis.client();
 

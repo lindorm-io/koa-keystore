@@ -4,7 +4,7 @@ import { KeyPair } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
 import { WebKeyHandlerError } from "../error";
 
-interface IWebKeyHandlerOptions {
+interface Options {
   baseUrl: string;
   logger: Logger;
   name: string;
@@ -18,7 +18,7 @@ export class WebKeyHandler {
   private readonly axios: Axios;
   private readonly logger: Logger;
 
-  public constructor(options: IWebKeyHandlerOptions) {
+  public constructor(options: Options) {
     this.logger = options.logger.createChildLogger(["WebKeyHandler"]);
     this.axios = new Axios({
       baseUrl: options.baseUrl,

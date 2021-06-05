@@ -1,8 +1,8 @@
 import { Middleware } from "@lindorm-io/koa";
-import { RepositoryKeystoreContext } from "../typing";
+import { KeystoreContext } from "../typing";
 import { KeyPairRepository } from "../infrastructure";
 
-export const keyPairRepositoryMiddleware: Middleware<RepositoryKeystoreContext> = async (ctx, next): Promise<void> => {
+export const keyPairRepositoryMiddleware: Middleware<KeystoreContext> = async (ctx, next): Promise<void> => {
   const start = Date.now();
 
   ctx.repository.keyPairRepository = new KeyPairRepository({

@@ -1,1 +1,2 @@
-export * from "./key-pair";
+export * from "./KeyPairCache";
+export * from "./KeyPairRepository";

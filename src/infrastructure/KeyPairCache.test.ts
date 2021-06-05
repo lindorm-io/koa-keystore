@@ -2,7 +2,7 @@ import MockDate from "mockdate";
 import { CacheEntityNotFoundError } from "@lindorm-io/redis";
 import { KeyPair } from "@lindorm-io/key-pair";
 import { KeyPairCache } from "./KeyPairCache";
-import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, resetCache } from "../../test";
+import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, resetCache } from "../test";
 
 MockDate.set("2020-01-01T08:00:00.000Z");
 
