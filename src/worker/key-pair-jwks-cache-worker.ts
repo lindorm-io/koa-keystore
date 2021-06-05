@@ -5,7 +5,7 @@ import { Keystore } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
 import { WebKeyHandler } from "../class";
 
-export interface IKeyPairJwksCacheWorkerOptions {
+interface Options {
   baseUrl: string;
   keystoreName: string;
   redisConnection?: RedisConnection;
@@ -14,7 +14,7 @@ export interface IKeyPairJwksCacheWorkerOptions {
   workerIntervalInSeconds: number;
 }
 
-export const keyPairJwksCacheWorker = (options: IKeyPairJwksCacheWorkerOptions): IntervalWorker => {
+export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
   const { baseUrl, keystoreName, redisConnection, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
 
   const expiresInSeconds = workerIntervalInSeconds + 120;

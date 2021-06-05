@@ -6,7 +6,7 @@ import { KeyPairRepository } from "../infrastructure";
 import { Keystore } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
 
-export interface IKeyPairMongoCacheWorkerOptions {
+interface Options {
   keystoreName: string;
   mongoConnection?: MongoConnection;
   mongoConnectionOptions?: MongoConnectionOptions;
@@ -16,7 +16,7 @@ export interface IKeyPairMongoCacheWorkerOptions {
   workerIntervalInSeconds: number;
 }
 
-export const keyPairMongoCacheWorker = (options: IKeyPairMongoCacheWorkerOptions): IntervalWorker => {
+export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
   const {
     keystoreName,
     mongoConnection,
