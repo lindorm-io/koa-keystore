@@ -1,14 +1,14 @@
-import { Middleware } from "@lindorm-io/koa";
 import { KeystoreContext } from "../typing";
-import { Keystore } from "@lindorm-io/key-pair";
+import { Middleware } from "@lindorm-io/koa";
 import { WebKeyHandler } from "../class";
+import { flatten } from "lodash";
 
 interface Options {
   baseUrl: string;
-  keystoreName: string;
+  clientName: string;
 }
 
-export const jwksKeystoreMiddleware =
+export const jwksKeysMiddleware =
   (options: Options): Middleware<KeystoreContext> =>
   async (ctx, next): Promise<void> => {
     const start = Date.now();
@@ -16,10 +16,19 @@ export const jwksKeystoreMiddleware =
     const handler = new WebKeyHandler({
       baseUrl: options.baseUrl,
       logger: ctx.logger,
-      name: options.keystoreName,
+      name: options.clientName,
     });
 
-    ctx.keystore[options.keystoreName] = new Keystore({ keys: await handler.getKeys() });
+    const keys = await handler.getKeys();
+
+    ctx.keys = flatten([ctx.keys, keys]);
+
+    ctx.logger.debug("keys found on client", {
+      baseUrl: options.baseUrl,
+      client: options.clientName,
+      amount: keys.length,
+      total: ctx.keys.length,
+    });
 
     ctx.metrics.keystore = (ctx.metrics.keystore || 0) + (Date.now() - start);
 

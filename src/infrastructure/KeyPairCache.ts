@@ -1,17 +1,11 @@
 import { CacheBase, CacheOptions } from "@lindorm-io/redis";
 import { KeyPairAttributes, KeyPair } from "@lindorm-io/key-pair";
 
-interface Options extends CacheOptions {
-  keystoreName: string;
-}
-
 export class KeyPairCache extends CacheBase<KeyPairAttributes, KeyPair> {
-  public constructor(options: Options) {
-    const entityName = options.keystoreName ? `KeyPair::${options.keystoreName}` : "KeyPair";
-
+  public constructor(options: CacheOptions) {
     super({
       client: options.client,
-      entityName,
+      entityName: "KeyPair",
       expiresInSeconds: options.expiresInSeconds,
       logger: options.logger,
     });

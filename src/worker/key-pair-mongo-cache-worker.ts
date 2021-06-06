@@ -7,7 +7,6 @@ import { Keystore } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
 
 interface Options {
-  keystoreName: string;
   mongoConnection?: MongoConnection;
   mongoConnectionOptions?: MongoConnectionOptions;
   redisConnection?: RedisConnection;
@@ -18,7 +17,6 @@ interface Options {
 
 export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
   const {
-    keystoreName,
     mongoConnection,
     mongoConnectionOptions,
     redisConnection,
@@ -65,13 +63,11 @@ export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
         client: redis.client(),
         logger,
         expiresInSeconds,
-        keystoreName,
       });
 
-      const array = await repository.findMany({});
+      const array = await repository.findMany({ allowed: true });
 
       for (const entity of array) {
-        if (!Keystore.isKeyUsable(entity)) continue;
         const expires = Keystore.getTTL(entity);
         await cache.create(entity, expires?.seconds);
       }

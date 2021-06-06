@@ -3,9 +3,7 @@ import { getTestRedis } from "./test-redis";
 import { logger } from "./test-logger";
 
 interface Data {
-  keyPair: {
-    [key: string]: KeyPairCache;
-  };
+  keyPairCache: KeyPairCache;
 }
 
 export const getTestCache = async (): Promise<Data> => {
@@ -13,12 +11,9 @@ export const getTestCache = async (): Promise<Data> => {
   const client = redis.client();
 
   return {
-    keyPair: {
-      keystoreName: new KeyPairCache({
-        client,
-        keystoreName: "keystoreName",
-        logger,
-      }),
-    },
+    keyPairCache: new KeyPairCache({
+      client,
+      logger,
+    }),
   };
 };

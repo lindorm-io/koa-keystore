@@ -7,7 +7,7 @@ import { WebKeyHandler } from "../class";
 
 interface Options {
   baseUrl: string;
-  keystoreName: string;
+  clientName: string;
   redisConnection?: RedisConnection;
   redisConnectionOptions?: RedisConnectionOptions;
   winston: Logger;
@@ -15,7 +15,7 @@ interface Options {
 }
 
 export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
-  const { baseUrl, keystoreName, redisConnection, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
+  const { baseUrl, clientName, redisConnection, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
 
   const expiresInSeconds = workerIntervalInSeconds + 120;
   const time = workerIntervalInSeconds * 1000;
@@ -27,7 +27,7 @@ export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
 
   return new IntervalWorker({
     callback: async (): Promise<void> => {
-      const handler = new WebKeyHandler({ baseUrl, logger, name: keystoreName });
+      const handler = new WebKeyHandler({ baseUrl, logger, name: clientName });
 
       const redis = redisConnection
         ? redisConnection
@@ -41,13 +41,11 @@ export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
         client: redis.client(),
         logger,
         expiresInSeconds,
-        keystoreName,
       });
 
       const array = await handler.getKeys();
 
       for (const entity of array) {
-        if (!Keystore.isKeyUsable(entity)) continue;
         const expires = Keystore.getTTL(entity);
         await cache.create(entity, expires?.seconds);
       }

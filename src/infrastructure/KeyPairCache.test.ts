@@ -7,50 +7,49 @@ import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, reset
 MockDate.set("2020-01-01T08:00:00.000Z");
 
 describe("KeyPairCache", () => {
-  let cache: KeyPairCache;
+  let keyPairCache: KeyPairCache;
   let keyPair: KeyPair;
 
   beforeEach(async () => {
-    ({
-      keyPair: { keystoreName: cache },
-    } = await getTestCache());
+    ({ keyPairCache } = await getTestCache());
+
     keyPair = getTestKeyPairEC();
   });
 
   afterEach(resetCache);
 
   test("should create", async () => {
-    await expect(cache.create(keyPair)).resolves.toStrictEqual(expect.any(KeyPair));
+    await expect(keyPairCache.create(keyPair)).resolves.toStrictEqual(expect.any(KeyPair));
     expect(inMemoryCache).toMatchSnapshot();
   });
 
   test("should update", async () => {
-    await cache.create(keyPair);
+    await keyPairCache.create(keyPair);
 
     keyPair.expires = new Date("2099-01-01T08:00:00.000Z");
 
-    await expect(cache.update(keyPair)).resolves.toStrictEqual(expect.any(KeyPair));
+    await expect(keyPairCache.update(keyPair)).resolves.toStrictEqual(expect.any(KeyPair));
     expect(inMemoryCache).toMatchSnapshot();
   });
 
   test("should find", async () => {
-    await cache.create(keyPair);
+    await keyPairCache.create(keyPair);
 
-    await expect(cache.find(keyPair.id)).resolves.toMatchSnapshot();
+    await expect(keyPairCache.find(keyPair.id)).resolves.toMatchSnapshot();
   });
 
   test("should find many", async () => {
-    await cache.create(keyPair);
-    await cache.create(getTestKeyPairRSA());
+    await keyPairCache.create(keyPair);
+    await keyPairCache.create(getTestKeyPairRSA());
 
-    await expect(cache.findAll()).resolves.toMatchSnapshot();
+    await expect(keyPairCache.findAll()).resolves.toMatchSnapshot();
   });
 
   test("should remove", async () => {
-    await cache.create(keyPair);
+    await keyPairCache.create(keyPair);
 
-    await expect(cache.remove(keyPair)).resolves.toBeUndefined();
-    await expect(cache.find(keyPair.id)).rejects.toStrictEqual(expect.any(CacheEntityNotFoundError));
+    await expect(keyPairCache.remove(keyPair)).resolves.toBeUndefined();
+    await expect(keyPairCache.find(keyPair.id)).rejects.toStrictEqual(expect.any(CacheEntityNotFoundError));
     expect(inMemoryCache).toMatchSnapshot();
   });
 });
