@@ -1,4 +1,5 @@
 import MockDate from "mockdate";
+import { Metric } from "@lindorm-io/koa";
 import { getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 import { jwksKeysMiddleware } from "./jwks-keys-middleware";
 
@@ -23,6 +24,7 @@ describe("jwksKeysMiddleware", () => {
       logger,
       metrics: {},
     };
+    ctx.getMetric = (key: string) => new Metric(ctx, key);
   });
 
   test("should successfully add keys to context", async () => {

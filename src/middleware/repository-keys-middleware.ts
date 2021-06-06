@@ -3,7 +3,7 @@ import { KeystoreContext } from "../typing";
 import { flatten } from "lodash";
 
 export const repositoryKeysMiddleware: Middleware<KeystoreContext> = async (ctx, next): Promise<void> => {
-  const start = Date.now();
+  const metric = ctx.getMetric("keystore");
 
   const keys = await ctx.repository.keyPairRepository.findMany({ allowed: true });
 
@@ -11,7 +11,7 @@ export const repositoryKeysMiddleware: Middleware<KeystoreContext> = async (ctx,
 
   ctx.logger.debug("keys found in repository", { amount: keys.length, total: ctx.keys.length });
 
-  ctx.metrics.keystore = (ctx.metrics.keystore || 0) + (Date.now() - start);
+  metric.end();
 
   await next();
 };

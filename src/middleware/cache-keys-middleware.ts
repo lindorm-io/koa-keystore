@@ -3,7 +3,7 @@ import { flatten } from "lodash";
 import { KeystoreContext } from "../typing";
 
 export const cacheKeysMiddleware: Middleware<KeystoreContext> = async (ctx, next): Promise<void> => {
-  const start = Date.now();
+  const metric = ctx.getMetric("keystore");
 
   const keys = await ctx.cache.keyPairCache.findMany({ allowed: true });
 
@@ -11,7 +11,7 @@ export const cacheKeysMiddleware: Middleware<KeystoreContext> = async (ctx, next
 
   ctx.logger.debug("keys found in cache", { amount: keys.length, total: ctx.keys.length });
 
-  ctx.metrics.keystore = (ctx.metrics.keystore || 0) + (Date.now() - start);
+  metric.end();
 
   await next();
 };

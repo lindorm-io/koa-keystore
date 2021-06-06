@@ -11,7 +11,7 @@ interface Options {
 export const jwksKeysMiddleware =
   (options: Options): Middleware<KeystoreContext> =>
   async (ctx, next): Promise<void> => {
-    const start = Date.now();
+    const metric = ctx.getMetric("keystore");
 
     const handler = new WebKeyHandler({
       baseUrl: options.baseUrl,
@@ -30,7 +30,7 @@ export const jwksKeysMiddleware =
       total: ctx.keys.length,
     });
 
-    ctx.metrics.keystore = (ctx.metrics.keystore || 0) + (Date.now() - start);
+    metric.end();
 
     await next();
   };

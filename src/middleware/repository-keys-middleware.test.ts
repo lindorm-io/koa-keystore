@@ -1,6 +1,7 @@
 import MockDate from "mockdate";
-import { repositoryKeysMiddleware } from "./repository-keys-middleware";
+import { Metric } from "@lindorm-io/koa";
 import { getTestKeyPairEC, getTestKeyPairRSA, getTestRepository, logger } from "../test";
+import { repositoryKeysMiddleware } from "./repository-keys-middleware";
 
 MockDate.set("2020-01-01T08:00:00.000Z");
 
@@ -16,6 +17,7 @@ describe("repositoryKeysMiddleware", () => {
       metrics: {},
       repository: await getTestRepository(),
     };
+    ctx.getMetric = (key: string) => new Metric(ctx, key);
 
     await ctx.repository.keyPairRepository.create(getTestKeyPairRSA());
   });

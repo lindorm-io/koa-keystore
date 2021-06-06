@@ -46,13 +46,13 @@
     "joi": "^17.4.0"
   },
   "peerDependencies": {
-    "@lindorm-io/koa": ">=0.2.17",
+    "@lindorm-io/koa": ">=0.2.19",
     "@lindorm-io/mongo": ">=0.4.5",
     "@lindorm-io/redis": ">=0.2.2",
     "@lindorm-io/winston": ">=0.1.5"
   },
   "devDependencies": {
-    "@lindorm-io/koa": "^0.2.17",
+    "@lindorm-io/koa": "^0.2.19",
     "@lindorm-io/mongo": "^0.4.5",
     "@lindorm-io/redis": "^0.2.2",
     "@lindorm-io/winston": "^0.1.5",

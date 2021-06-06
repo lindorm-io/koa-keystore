@@ -1,4 +1,5 @@
 import MockDate from "mockdate";
+import { Metric } from "@lindorm-io/koa";
 import { cacheKeysMiddleware } from "./cache-keys-middleware";
 import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 
@@ -16,6 +17,7 @@ describe("cacheKeysMiddleware", () => {
       logger,
       metrics: {},
     };
+    ctx.getMetric = (key: string) => new Metric(ctx, key);
 
     await ctx.cache.keyPairCache.create(getTestKeyPairRSA());
   });
