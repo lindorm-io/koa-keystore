@@ -14,54 +14,62 @@ This package has the following peer dependencies:
 * [@lindorm-io/winston](https://www.npmjs.com/package/@lindorm-io/winston)
 
 ## Usage
+You will need a middleware that sets keys on context. You can add multiple middleware to add multiple key sources. They will flatten to one array. Once you are done, you will need to initialise the keystore. Add this middleware after all keys have been set.
 
-### Keystore Middleware connected to Mongo Repository
-Ensure that the repository exists on your context, and then add the keystore middleware.
+### Keys
+Use one or many of these strategies to add keys to context.
 
+#### JWKS
 ```typescript
-koaApp.addMiddleware(keyPairRepositoryMiddleware);
-koaApp.addMiddleware(repositoryKeystoreMiddleware({
-  keystoreName : "auth",
-}));
+koaApp.addMiddleware(jwksKeysMiddleware);
 ```
 
-### Keystore Middleware with Redis Cache connected to Mongo Repository
-Ensure that redis is continuously updated. Ensure that the cache exists on your context, and then add the keystore middleware. 
+#### Repository Keys
+```typescript
+koaApp.addMiddleware(repositoryMiddleware(KeyPairRepository)); // from koa-mongo
+koaApp.addMiddleware(repositoryKeysMiddleware);
+```
 
+#### Cached Repository Keys
 ```typescript
 koaApp.addWorker(keyPairMongoCacheWorker({
-  keystoreName : "auth",
+  mongoConnection, // not required if mongoConnectionOptions is set
   mongoConnectionOptions: {
     auth: { user: "root", password: "example" },
     databaseName: "database",
     hostname: "mongo.host", 
     port: 27000,
-  },
+  }, // not required if mongoConnection is set
+  resisConnection, // not required if redisConnectionOptions is set
   redisConnectionOptions: {
     port: 1000,
     type: RedisConnectionType.CACHE,
-  },
+  }, // not required if redisConnection is set
   winston: winstonLogger,
   workerIntervalInSeconds: 60 * 60 // 60 minutes
-}))
-koaApp.addMiddleware(keyPairCacheMiddleware({ keystoreName: "auth" }));
-koaApp.addMiddleware(cacheKeystoreMiddleware({ keystoreName: "auth" }));
+}));
+koaApp.addMiddleware(cacheMiddleware(KeyPairCache)); // from koa-redis
+koaApp.addMiddleware(cacheKeysMiddleware);
 ```
 
-### Keystore Middleware with Redis Cache connected to JWKS Handler
-Ensure that redis is continuously updated. Ensure that the cache exists on your context, and then add the keystore middleware.
-
+#### Cached JWKS
 ```typescript
 koaApp.addWorker(keyPairJwksCacheWorker({
-  jwksHost: "https://authentication.service",
-  keystoreName: "auth",
+  baseUrl: "https://authentication.service",
+  clientName: "Authentication",
+  resisConnection, // not required if redisConnectionOptions is set
   redisConnectionOptions: {
     port: 1000,
     type: RedisConnectionType.CACHE,
-  },
+  }, // not required if redisConnection is set
   winston: winstonLogger,
   workerIntervalInSeconds: 60 * 60 // 60 minutes
-}))
-koaApp.addMiddleware(keyPairCacheMiddleware({ keystoreName: "auth" }));
-koaApp.addMiddleware(cacheKeystoreMiddleware({ keystoreName: "auth" }));
+}));
+koaApp.addMiddleware(cacheMiddleware(KeyPairCache)); // from koa-redis
+koaApp.addMiddleware(cacheKeysMiddleware);
+```
+
+### Keystore
+```typescript
+koaApp.addMiddleware(keystoreMiddleware);
 ```
