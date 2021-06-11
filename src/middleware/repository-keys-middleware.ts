@@ -5,7 +5,7 @@ import { flatten } from "lodash";
 export const repositoryKeysMiddleware: Middleware<KeystoreContext> = async (ctx, next): Promise<void> => {
   const metric = ctx.getMetric("keystore");
 
-  const keys = await ctx.repository.keyPairRepository.findMany({ allowed: true });
+  const keys = await ctx.repository.keyPairRepository.findMany({});
 
   ctx.keys = flatten([ctx.keys, keys]);
 

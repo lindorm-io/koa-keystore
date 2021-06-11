@@ -7,7 +7,7 @@ import { WebKeyHandlerError } from "../error";
 interface Options {
   baseUrl: string;
   logger: Logger;
-  name: string;
+  clientName: string;
 }
 
 interface AxiosResponse {
@@ -23,35 +23,31 @@ export class WebKeyHandler {
     this.axios = new Axios({
       baseUrl: options.baseUrl,
       logger: this.logger,
-      name: options.name,
+      name: options.clientName,
     });
   }
 
   public async getKeys(): Promise<Array<KeyPair>> {
     const start = Date.now();
 
-    try {
-      const response = await this.axios.get<AxiosResponse>("/.well-known/jwks.json");
-      const keys = response?.data?.keys;
+    const response = await this.axios.get<AxiosResponse>("/.well-known/jwks.json");
+    const keys = response?.data?.keys;
 
-      if (!keys || !keys.length) {
-        throw new Error("No keys could be found");
-      }
-
-      const array: Array<KeyPair> = [];
-
-      for (const key of keys) {
-        array.push(KeyPair.fromJWK(key));
-      }
-
-      this.logger.debug("found keys from host", {
-        result: { success: !!keys.length, amount: keys.length },
-        time: Date.now() - start,
-      });
-
-      return array;
-    } catch (err) {
-      throw new WebKeyHandlerError(err);
+    if (!keys || !keys.length) {
+      throw new WebKeyHandlerError("No keys found on jwks endpoint", { debug: { response } });
     }
+
+    const array: Array<KeyPair> = [];
+
+    for (const key of keys) {
+      array.push(KeyPair.fromJWK(key));
+    }
+
+    this.logger.debug("found keys on jwks endpoint", {
+      result: { success: !!keys.length, amount: keys.length },
+      time: Date.now() - start,
+    });
+
+    return array;
   }
 }

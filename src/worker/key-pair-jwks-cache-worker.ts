@@ -27,7 +27,7 @@ export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
 
   return new IntervalWorker({
     callback: async (): Promise<void> => {
-      const handler = new WebKeyHandler({ baseUrl, logger, name: clientName });
+      const handler = new WebKeyHandler({ baseUrl, logger, clientName });
 
       const redis = redisConnection
         ? redisConnection

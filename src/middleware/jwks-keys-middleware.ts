@@ -16,7 +16,7 @@ export const jwksKeysMiddleware =
     const handler = new WebKeyHandler({
       baseUrl: options.baseUrl,
       logger: ctx.logger,
-      name: options.clientName,
+      clientName: options.clientName,
     });
 
     const keys = await handler.getKeys();

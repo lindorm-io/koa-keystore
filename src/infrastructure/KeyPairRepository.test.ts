@@ -1,7 +1,7 @@
 import MockDate from "mockdate";
 import { KeyPair, KeyType } from "@lindorm-io/key-pair";
 import { KeyPairRepository } from "./KeyPairRepository";
-import { RepositoryEntityNotFoundError } from "@lindorm-io/mongo";
+import { EntityNotFoundError } from "@lindorm-io/mongo";
 import { getTestKeyPairEC, getTestRepository, inMemoryStore, resetStore } from "../test";
 
 MockDate.set("2020-01-01T08:00:00.000Z");
@@ -48,7 +48,7 @@ describe("KeyPairRepository", () => {
     await repository.create(keyPair);
 
     await expect(repository.remove(keyPair)).resolves.toBeUndefined();
-    await expect(repository.find({ id: keyPair.id })).rejects.toStrictEqual(expect.any(RepositoryEntityNotFoundError));
+    await expect(repository.find({ id: keyPair.id })).rejects.toThrow(EntityNotFoundError);
     expect(inMemoryStore).toMatchSnapshot();
   });
 });

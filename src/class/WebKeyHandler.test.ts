@@ -33,7 +33,7 @@ describe("JWKSHandler.ts", () => {
     handler = new WebKeyHandler({
       baseUrl: "http://base.url/",
       logger,
-      name: "name",
+      clientName: "name",
     });
   });
 
@@ -59,6 +59,6 @@ describe("JWKSHandler.ts", () => {
   test("should throw error if there are no keys", async () => {
     keys = [];
 
-    await expect(handler.getKeys()).rejects.toStrictEqual(expect.any(WebKeyHandlerError));
+    await expect(handler.getKeys()).rejects.toThrow(WebKeyHandlerError);
   });
 });

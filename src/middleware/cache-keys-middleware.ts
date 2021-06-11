@@ -5,7 +5,7 @@ import { KeystoreContext } from "../typing";
 export const cacheKeysMiddleware: Middleware<KeystoreContext> = async (ctx, next): Promise<void> => {
   const metric = ctx.getMetric("keystore");
 
-  const keys = await ctx.cache.keyPairCache.findMany({ allowed: true });
+  const keys = await ctx.cache.keyPairCache.findMany({});
 
   ctx.keys = flatten([ctx.keys, keys]);
 

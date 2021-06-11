@@ -1,5 +1,5 @@
 import MockDate from "mockdate";
-import { CacheEntityNotFoundError } from "@lindorm-io/redis";
+import { EntityNotFoundError } from "@lindorm-io/redis";
 import { KeyPair } from "@lindorm-io/key-pair";
 import { KeyPairCache } from "./KeyPairCache";
 import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, resetCache } from "../test";
@@ -49,7 +49,7 @@ describe("KeyPairCache", () => {
     await keyPairCache.create(keyPair);
 
     await expect(keyPairCache.remove(keyPair)).resolves.toBeUndefined();
-    await expect(keyPairCache.find(keyPair.id)).rejects.toStrictEqual(expect.any(CacheEntityNotFoundError));
+    await expect(keyPairCache.find(keyPair.id)).rejects.toThrow(EntityNotFoundError);
     expect(inMemoryCache).toMatchSnapshot();
   });
 });
