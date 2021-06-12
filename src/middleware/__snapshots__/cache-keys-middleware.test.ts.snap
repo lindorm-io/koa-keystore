@@ -6,7 +6,7 @@ Array [
     "algorithms": Array [
       "ES512",
     ],
-    "allowed": true,
+    "allowed": 2020-01-01T08:00:00.000Z,
     "created": 2020-01-01T08:00:00.000Z,
     "events": Array [],
     "expires": null,
@@ -32,7 +32,7 @@ OQLhJKj4uO0wPYgkmFU=
 -----END PUBLIC KEY-----
 ",
     "type": "EC",
-    "updated": 2020-01-01T08:00:00.000Z,
+    "updated": 2021-01-01T08:00:00.000Z,
     "version": 0,
   },
   Object {
@@ -41,11 +41,11 @@ OQLhJKj4uO0wPYgkmFU=
       "RS384",
       "RS512",
     ],
-    "allowed": true,
+    "allowed": 2020-01-01T08:00:00.000Z,
     "created": 2020-01-01T08:00:00.000Z,
     "events": Array [
       Object {
-        "date": 2020-01-01T08:00:00.000Z,
+        "date": 2021-01-01T08:00:00.000Z,
         "name": "key_pair_created",
         "payload": Object {
           "algorithms": Array [
@@ -53,7 +53,7 @@ OQLhJKj4uO0wPYgkmFU=
             "RS384",
             "RS512",
           ],
-          "allowed": true,
+          "allowed": 2020-01-01T08:00:00.000Z,
           "created": 2020-01-01T08:00:00.000Z,
           "expires": null,
           "external": false,
@@ -87,7 +87,7 @@ tWWfrWyCckHTDgGD/gvpM5ygkHbhru8nu0pMZNI1N5GW5bMgmX1tAgMBAAE=
 -----END RSA PUBLIC KEY-----
 ",
           "type": "RSA",
-          "updated": 2020-01-01T08:00:00.000Z,
+          "updated": 2021-01-01T08:00:00.000Z,
           "version": 0,
         },
       },
@@ -124,7 +124,7 @@ tWWfrWyCckHTDgGD/gvpM5ygkHbhru8nu0pMZNI1N5GW5bMgmX1tAgMBAAE=
 -----END RSA PUBLIC KEY-----
 ",
     "type": "RSA",
-    "updated": 2020-01-01T08:00:00.000Z,
+    "updated": 2021-01-01T08:00:00.000Z,
     "version": 0,
   },
 ]

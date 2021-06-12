@@ -3,7 +3,7 @@ import { Metric } from "@lindorm-io/koa";
 import { getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 import { jwksKeysMiddleware } from "./jwks-keys-middleware";
 
-MockDate.set("2020-01-01T08:00:00.000Z");
+MockDate.set("2021-01-01T08:00:00.000Z");
 
 jest.mock("../class", () => ({
   WebKeyHandler: class WebKeyHandler {

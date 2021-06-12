@@ -4,7 +4,7 @@ import { getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 import { keystoreMiddleware } from "./keystore-middleware";
 import { Keystore } from "@lindorm-io/key-pair";
 
-MockDate.set("2020-01-01T08:00:00.000Z");
+MockDate.set("2021-01-01T08:00:00.000Z");
 
 const next = () => Promise.resolve();
 

@@ -24,11 +24,14 @@ export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
   if (!redisConnection && !redisConnectionOptions) {
     throw new Error("redis connection must be established with either [ redisConnection, redisConnectionOptions ]");
   }
+  if (redisConnection && redisConnectionOptions) {
+    logger.warn("redisConnection and redisConnectionOptions supplied. Only redisConnection will be used.");
+  }
+
+  const handler = new WebKeyHandler({ baseUrl, logger, clientName });
 
   return new IntervalWorker({
     callback: async (): Promise<void> => {
-      const handler = new WebKeyHandler({ baseUrl, logger, clientName });
-
       const redis = redisConnection
         ? redisConnection
         : new RedisConnection(redisConnectionOptions as RedisConnectionOptions);

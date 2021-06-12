@@ -32,8 +32,15 @@ export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
   if (!mongoConnection && !mongoConnectionOptions) {
     throw new Error("mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]");
   }
+  if (mongoConnection && mongoConnectionOptions) {
+    logger.warn("mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.");
+  }
+
   if (!redisConnection && !redisConnectionOptions) {
     throw new Error("redis connection must be established with either [ redisConnection, redisConnectionOptions ]");
+  }
+  if (redisConnection && redisConnectionOptions) {
+    logger.warn("redisConnection and redisConnectionOptions supplied. Only redisConnection will be used.");
   }
 
   return new IntervalWorker({
@@ -65,7 +72,7 @@ export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
         expiresInSeconds,
       });
 
-      const array = await repository.findMany({ allowed: true });
+      const array = await repository.findMany({});
 
       for (const entity of array) {
         const expires = Keystore.getTTL(entity);

@@ -42,7 +42,6 @@ describe("JWKSHandler.ts", () => {
       expect.arrayContaining([
         expect.objectContaining({
           algorithms: ["ES512"],
-          allowed: true,
           events: [],
           expires: null,
           id: "391a4598-5dc6-4e3c-b1d9-a971ac55b3bb",

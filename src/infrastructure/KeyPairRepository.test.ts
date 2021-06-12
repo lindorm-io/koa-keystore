@@ -4,7 +4,7 @@ import { KeyPairRepository } from "./KeyPairRepository";
 import { EntityNotFoundError } from "@lindorm-io/mongo";
 import { getTestKeyPairEC, getTestRepository, inMemoryStore, resetStore } from "../test";
 
-MockDate.set("2020-01-01T08:00:00.000Z");
+MockDate.set("2021-01-01T08:00:00.000Z");
 
 describe("KeyPairRepository", () => {
   let repository: KeyPairRepository;

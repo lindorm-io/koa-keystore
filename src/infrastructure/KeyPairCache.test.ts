@@ -4,7 +4,7 @@ import { KeyPair } from "@lindorm-io/key-pair";
 import { KeyPairCache } from "./KeyPairCache";
 import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, resetCache } from "../test";
 
-MockDate.set("2020-01-01T08:00:00.000Z");
+MockDate.set("2021-01-01T08:00:00.000Z");
 
 describe("KeyPairCache", () => {
   let keyPairCache: KeyPairCache;
