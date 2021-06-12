@@ -73,3 +73,20 @@ koaApp.addMiddleware(cacheKeysMiddleware);
 ```typescript
 koaApp.addMiddleware(keystoreMiddleware);
 ```
+
+### Cleanup
+If you're using key-pairs from repository, you should leave a worker running to clean up expired keys.
+
+```typescript
+koaApp.addWorker(keyPairCleanupWorker({
+  mongoConnection, // not required if mongoConnectionOptions is set
+  mongoConnectionOptions: {
+    auth: { user: "root", password: "example" },
+    databaseName: "database",
+    hostname: "mongo.host",
+    port: 27000,
+  }, // not required if mongoConnection is set
+  winston: winstonLogger,
+  workerIntervalInSeconds: 60 * 60 // 60 minutes
+}))
+```
