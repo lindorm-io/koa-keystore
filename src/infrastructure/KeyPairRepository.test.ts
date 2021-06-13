@@ -1,7 +1,7 @@
 import MockDate from "mockdate";
+import { EntityNotFoundError } from "@lindorm-io/mongo";
 import { KeyPair, KeyType } from "@lindorm-io/key-pair";
 import { KeyPairRepository } from "./KeyPairRepository";
-import { EntityNotFoundError } from "@lindorm-io/mongo";
 import { getTestKeyPairEC, getTestRepository, inMemoryStore, resetStore } from "../test";
 
 MockDate.set("2021-01-01T08:00:00.000Z");

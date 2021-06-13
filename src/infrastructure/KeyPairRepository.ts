@@ -1,16 +1,27 @@
 import { KeyPairAttributes, KeyPair } from "@lindorm-io/key-pair";
-import { RepositoryOptions, RepositoryBase } from "@lindorm-io/mongo";
+import { RepositoryOptions, LindormRepository } from "@lindorm-io/mongo";
 
-export class KeyPairRepository extends RepositoryBase<KeyPairAttributes, KeyPair> {
+export class KeyPairRepository extends LindormRepository<KeyPairAttributes, KeyPair> {
   public constructor(options: RepositoryOptions) {
     super({
+      ...options,
       collectionName: "key_pair",
-      db: options.db,
-      logger: options.logger,
       indices: [
         {
-          index: { id: 1 },
-          options: { unique: true },
+          index: { expires: 1 },
+          options: { unique: false },
+        },
+        {
+          index: { external: 1 },
+          options: { unique: false },
+        },
+        {
+          index: { preferredAlgorithm: 1 },
+          options: { unique: false },
+        },
+        {
+          index: { type: 1 },
+          options: { unique: false },
         },
       ],
     });
