@@ -43,19 +43,19 @@
   "dependencies": {
     "@lindorm-io/axios": "^0.2.2",
     "@lindorm-io/errors": "^0.1.5",
-    "@lindorm-io/key-pair": "^0.2.11",
+    "@lindorm-io/key-pair": "^0.3.0",
     "joi": "^17.4.0"
   },
   "peerDependencies": {
     "@lindorm-io/koa": ">=0.2.21",
-    "@lindorm-io/mongo": ">=0.4.8",
-    "@lindorm-io/redis": ">=0.2.4",
+    "@lindorm-io/mongo": ">=0.5.0",
+    "@lindorm-io/redis": ">=0.3.0",
     "@lindorm-io/winston": ">=0.1.6"
   },
   "devDependencies": {
     "@lindorm-io/koa": "^0.2.21",
-    "@lindorm-io/mongo": "^0.4.8",
-    "@lindorm-io/redis": "^0.2.4",
+    "@lindorm-io/mongo": "^0.5.0",
+    "@lindorm-io/redis": "^0.3.0",
     "@lindorm-io/winston": "^0.1.6",
     "@types/jest": "^26.0.23",
     "@types/jsonwebtoken": "^8.5.1",
@@ -63,7 +63,7 @@
     "@types/koa-bodyparser": "^4.3.1",
     "@types/koa-router": "^7.4.2",
     "@types/lodash": "^4.14.170",
-    "@types/mongodb": "^3.6.17",
+    "@types/mongodb": "^3.6.18",
     "@types/node": "15.6.2",
     "@types/redis": "^2.8.29",
     "@types/uuid": "^8.3.0",
