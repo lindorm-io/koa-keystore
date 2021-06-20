@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@lindorm-io/axios": "^0.2.2",
+    "@lindorm-io/core": "^0.2.5",
     "@lindorm-io/errors": "^0.1.6",
     "@lindorm-io/key-pair": "^0.3.1",
     "joi": "^17.4.0"
@@ -58,7 +59,6 @@
     "@lindorm-io/redis": "^0.3.0",
     "@lindorm-io/winston": "^0.1.7",
     "@types/jest": "^26.0.23",
-    "@types/jsonwebtoken": "^8.5.1",
     "@types/koa": "^2.13.3",
     "@types/koa-bodyparser": "^4.3.1",
     "@types/koa-router": "^7.4.2",
@@ -69,7 +69,7 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "jest-extended": "^0.11.5",

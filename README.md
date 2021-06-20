@@ -46,7 +46,7 @@ koaApp.addWorker(keyPairMongoCacheWorker({
     type: RedisConnectionType.CACHE,
   }, // not required if redisConnection is set
   winston: winstonLogger,
-  workerIntervalInSeconds: 60 * 60 // 60 minutes
+  workerInterval: "1 hours",
 }));
 koaApp.addMiddleware(cacheMiddleware(KeyPairCache)); // from koa-redis
 koaApp.addMiddleware(cacheKeysMiddleware);
@@ -63,7 +63,7 @@ koaApp.addWorker(keyPairJwksCacheWorker({
     type: RedisConnectionType.CACHE,
   }, // not required if redisConnection is set
   winston: winstonLogger,
-  workerIntervalInSeconds: 60 * 60 // 60 minutes
+  workerInterval: "5 minutes",
 }));
 koaApp.addMiddleware(cacheMiddleware(KeyPairCache)); // from koa-redis
 koaApp.addMiddleware(cacheKeysMiddleware);
@@ -72,6 +72,27 @@ koaApp.addMiddleware(cacheKeysMiddleware);
 ### Keystore
 ```typescript
 koaApp.addMiddleware(keystoreMiddleware);
+```
+
+### Rotation
+If you want a worker to handle key rotation automatically, you can let this worker generate keys.
+
+```typescript
+koaApp.addWorker(keyPairRotationWorker({
+  keyType: KeyType.EC, // optional
+  mongoConnection, // not required if mongoConnectionOptions is set
+  mongoConnectionOptions: {
+    auth: { user: "root", password: "example" },
+    databaseName: "database",
+    hostname: "mongo.host",
+    port: 27000,
+  }, // not required if mongoConnection is set
+  namedCurve: NamedCurve.P521, // optional
+  passphrase: "passphrase", // optional
+  rotationInterval: "90 days", // optional
+  winston: winstonLogger,
+  workerInterval: "1 days",
+}))
 ```
 
 ### Cleanup
@@ -87,6 +108,6 @@ koaApp.addWorker(keyPairCleanupWorker({
     port: 27000,
   }, // not required if mongoConnection is set
   winston: winstonLogger,
-  workerIntervalInSeconds: 60 * 60 // 60 minutes
+  workerInterval: "1 days",
 }))
 ```
