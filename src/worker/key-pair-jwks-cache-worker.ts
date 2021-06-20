@@ -4,6 +4,7 @@ import { KeyPairCache } from "../infrastructure";
 import { Keystore } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
 import { WebKeyHandler } from "../class";
+import { stringToSeconds } from "@lindorm-io/core";
 
 interface Options {
   baseUrl: string;
@@ -11,12 +12,20 @@ interface Options {
   redisConnection?: RedisConnection;
   redisConnectionOptions?: RedisConnectionOptions;
   winston: Logger;
-  workerIntervalInSeconds: number;
+  workerInterval?: string;
 }
 
 export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
-  const { baseUrl, clientName, redisConnection, redisConnectionOptions, winston, workerIntervalInSeconds } = options;
+  const {
+    baseUrl,
+    clientName,
+    redisConnection,
+    redisConnectionOptions,
+    winston,
+    workerInterval = "5 minutes",
+  } = options;
 
+  const workerIntervalInSeconds = stringToSeconds(workerInterval);
   const expiresInSeconds = workerIntervalInSeconds + 120;
   const time = workerIntervalInSeconds * 1000;
   const logger = winston.createChildLogger(["keyPairJwksCacheWorker"]);

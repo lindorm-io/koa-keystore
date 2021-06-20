@@ -5,6 +5,7 @@ import { KeyPairCache } from "../infrastructure";
 import { KeyPairRepository } from "../infrastructure";
 import { Keystore } from "@lindorm-io/key-pair";
 import { Logger } from "@lindorm-io/winston";
+import { stringToSeconds } from "@lindorm-io/core";
 
 interface Options {
   mongoConnection?: MongoConnection;
@@ -12,7 +13,7 @@ interface Options {
   redisConnection?: RedisConnection;
   redisConnectionOptions?: RedisConnectionOptions;
   winston: Logger;
-  workerIntervalInSeconds: number;
+  workerInterval: string;
 }
 
 export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
@@ -22,9 +23,10 @@ export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
     redisConnection,
     redisConnectionOptions,
     winston,
-    workerIntervalInSeconds,
+    workerInterval = "1 hours",
   } = options;
 
+  const workerIntervalInSeconds = stringToSeconds(workerInterval);
   const expiresInSeconds = workerIntervalInSeconds + 120;
   const time = workerIntervalInSeconds * 1000;
   const logger = winston.createChildLogger(["keyPairMongoCacheWorker"]);

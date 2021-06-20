@@ -2,17 +2,19 @@ import { IntervalWorker } from "@lindorm-io/koa";
 import { KeyPairRepository } from "../infrastructure";
 import { Logger } from "@lindorm-io/winston";
 import { MongoConnectionOptions, MongoConnection } from "@lindorm-io/mongo";
+import { stringToSeconds } from "@lindorm-io/core";
 
 interface Options {
   mongoConnection?: MongoConnection;
   mongoConnectionOptions?: MongoConnectionOptions;
   winston: Logger;
-  workerIntervalInSeconds: number;
+  workerInterval?: string;
 }
 
 export const keyPairCleanupWorker = (options: Options): IntervalWorker => {
-  const { mongoConnection, mongoConnectionOptions, winston, workerIntervalInSeconds } = options;
+  const { mongoConnection, mongoConnectionOptions, winston, workerInterval = "1 days" } = options;
 
+  const workerIntervalInSeconds = stringToSeconds(workerInterval);
   const time = workerIntervalInSeconds * 1000;
   const logger = winston.createChildLogger(["keyPairMongoCacheWorker"]);
 
