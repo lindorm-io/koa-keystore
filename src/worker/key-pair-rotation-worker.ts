@@ -14,7 +14,7 @@ interface Options {
   passphrase?: string;
   rotationInterval?: string;
   winston: Logger;
-  workerInterval: string;
+  workerInterval?: string;
 }
 
 export const keyPairRotationWorker = (options: Options): IntervalWorker => {

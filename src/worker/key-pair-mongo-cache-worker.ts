@@ -13,7 +13,7 @@ interface Options {
   redisConnection?: RedisConnection;
   redisConnectionOptions?: RedisConnectionOptions;
   winston: Logger;
-  workerInterval: string;
+  workerInterval?: string;
 }
 
 export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
