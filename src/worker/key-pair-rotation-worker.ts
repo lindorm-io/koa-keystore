@@ -76,7 +76,7 @@ export const keyPairRotationWorker = (options: Options): IntervalWorker => {
         await repository.create(keyPair);
       }
 
-      if (keys.length >= 1 && keys.length <= 2) {
+      if (keys.length === 1) {
         const next = keys[0];
 
         if (next.expires) {
