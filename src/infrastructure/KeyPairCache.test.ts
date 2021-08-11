@@ -1,5 +1,5 @@
 import MockDate from "mockdate";
-import { EntityNotFoundError } from "@lindorm-io/redis";
+import { EntityNotFoundError } from "@lindorm-io/entity";
 import { KeyPair } from "@lindorm-io/key-pair";
 import { KeyPairCache } from "./KeyPairCache";
 import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, resetCache } from "../test";

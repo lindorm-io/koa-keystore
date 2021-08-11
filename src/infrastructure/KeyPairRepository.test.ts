@@ -1,5 +1,5 @@
 import MockDate from "mockdate";
-import { EntityNotFoundError } from "@lindorm-io/mongo";
+import { EntityNotFoundError } from "@lindorm-io/entity";
 import { KeyPair, KeyType } from "@lindorm-io/key-pair";
 import { KeyPairRepository } from "./KeyPairRepository";
 import { getTestKeyPairEC, getTestRepository, inMemoryStore, resetStore } from "../test";
