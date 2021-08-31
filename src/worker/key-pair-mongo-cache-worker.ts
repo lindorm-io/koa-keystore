@@ -32,17 +32,25 @@ export const keyPairMongoCacheWorker = (options: Options): IntervalWorker => {
   const logger = winston.createChildLogger(["keyPairMongoCacheWorker"]);
 
   if (!mongoConnection && !mongoConnectionOptions) {
-    throw new Error("mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]");
+    throw new Error(
+      "mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]",
+    );
   }
   if (mongoConnection && mongoConnectionOptions) {
-    logger.warn("mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.");
+    logger.warn(
+      "mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.",
+    );
   }
 
   if (!redisConnection && !redisConnectionOptions) {
-    throw new Error("redis connection must be established with either [ redisConnection, redisConnectionOptions ]");
+    throw new Error(
+      "redis connection must be established with either [ redisConnection, redisConnectionOptions ]",
+    );
   }
   if (redisConnection && redisConnectionOptions) {
-    logger.warn("redisConnection and redisConnectionOptions supplied. Only redisConnection will be used.");
+    logger.warn(
+      "redisConnection and redisConnectionOptions supplied. Only redisConnection will be used.",
+    );
   }
 
   return new IntervalWorker({

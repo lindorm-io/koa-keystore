@@ -12,17 +12,26 @@ interface Options {
 }
 
 export const keyPairCleanupWorker = (options: Options): IntervalWorker => {
-  const { mongoConnection, mongoConnectionOptions, winston, workerInterval = "1 days" } = options;
+  const {
+    mongoConnection,
+    mongoConnectionOptions,
+    winston,
+    workerInterval = "1 days",
+  } = options;
 
   const workerIntervalInSeconds = stringToSeconds(workerInterval);
   const time = workerIntervalInSeconds * 1000;
   const logger = winston.createChildLogger(["keyPairMongoCacheWorker"]);
 
   if (!mongoConnection && !mongoConnectionOptions) {
-    throw new Error("mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]");
+    throw new Error(
+      "mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]",
+    );
   }
   if (mongoConnection && mongoConnectionOptions) {
-    logger.warn("mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.");
+    logger.warn(
+      "mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.",
+    );
   }
 
   return new IntervalWorker({

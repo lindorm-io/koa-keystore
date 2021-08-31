@@ -34,7 +34,9 @@ export class WebKeyHandler {
     const keys = response?.data?.keys;
 
     if (!keys || !keys.length) {
-      throw new WebKeyHandlerError("No keys found on jwks endpoint", { debug: { response } });
+      throw new WebKeyHandlerError("No keys found on jwks endpoint", {
+        debug: { response },
+      });
     }
 
     const array: Array<KeyPair> = [];

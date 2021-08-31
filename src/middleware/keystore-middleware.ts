@@ -2,7 +2,10 @@ import { Middleware } from "@lindorm-io/koa";
 import { KeystoreContext } from "../typing";
 import { Keystore } from "@lindorm-io/key-pair";
 
-export const keystoreMiddleware: Middleware<KeystoreContext> = async (ctx, next): Promise<void> => {
+export const keystoreMiddleware: Middleware<KeystoreContext> = async (
+  ctx,
+  next,
+): Promise<void> => {
   const metric = ctx.getMetric("keystore");
 
   ctx.keystore = new Keystore({ keys: ctx.keys });

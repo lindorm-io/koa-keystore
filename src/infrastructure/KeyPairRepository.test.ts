@@ -48,7 +48,9 @@ describe("KeyPairRepository", () => {
     await repository.create(keyPair);
 
     await expect(repository.remove(keyPair)).resolves.toBeUndefined();
-    await expect(repository.find({ id: keyPair.id })).rejects.toThrow(EntityNotFoundError);
+    await expect(repository.find({ id: keyPair.id })).rejects.toThrow(
+      EntityNotFoundError,
+    );
     expect(inMemoryStore).toMatchSnapshot();
   });
 });

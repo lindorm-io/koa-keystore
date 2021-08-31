@@ -2,7 +2,13 @@ import MockDate from "mockdate";
 import { EntityNotFoundError } from "@lindorm-io/entity";
 import { KeyPair } from "@lindorm-io/key-pair";
 import { KeyPairCache } from "./KeyPairCache";
-import { getTestCache, getTestKeyPairEC, getTestKeyPairRSA, inMemoryCache, resetCache } from "../test";
+import {
+  getTestCache,
+  getTestKeyPairEC,
+  getTestKeyPairRSA,
+  inMemoryCache,
+  resetCache,
+} from "../test";
 
 MockDate.set("2021-01-01T08:00:00.000Z");
 
@@ -19,7 +25,9 @@ describe("KeyPairCache", () => {
   afterEach(resetCache);
 
   test("should create", async () => {
-    await expect(keyPairCache.create(keyPair)).resolves.toStrictEqual(expect.any(KeyPair));
+    await expect(keyPairCache.create(keyPair)).resolves.toStrictEqual(
+      expect.any(KeyPair),
+    );
     expect(inMemoryCache).toMatchSnapshot();
   });
 
@@ -28,7 +36,9 @@ describe("KeyPairCache", () => {
 
     keyPair.expires = new Date("2099-01-01T08:00:00.000Z");
 
-    await expect(keyPairCache.update(keyPair)).resolves.toStrictEqual(expect.any(KeyPair));
+    await expect(keyPairCache.update(keyPair)).resolves.toStrictEqual(
+      expect.any(KeyPair),
+    );
     expect(inMemoryCache).toMatchSnapshot();
   });
 

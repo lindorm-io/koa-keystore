@@ -32,10 +32,14 @@ export const keyPairRotationWorker = (options: Options): IntervalWorker => {
   const logger = winston.createChildLogger(["keyPairRotationWorker"]);
 
   if (!mongoConnection && !mongoConnectionOptions) {
-    throw new Error("mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]");
+    throw new Error(
+      "mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]",
+    );
   }
   if (mongoConnection && mongoConnectionOptions) {
-    logger.warn("mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.");
+    logger.warn(
+      "mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.",
+    );
   }
 
   return new IntervalWorker({

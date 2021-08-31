@@ -31,10 +31,14 @@ export const keyPairJwksCacheWorker = (options: Options): IntervalWorker => {
   const logger = winston.createChildLogger(["keyPairJwksCacheWorker"]);
 
   if (!redisConnection && !redisConnectionOptions) {
-    throw new Error("redis connection must be established with either [ redisConnection, redisConnectionOptions ]");
+    throw new Error(
+      "redis connection must be established with either [ redisConnection, redisConnectionOptions ]",
+    );
   }
   if (redisConnection && redisConnectionOptions) {
-    logger.warn("redisConnection and redisConnectionOptions supplied. Only redisConnection will be used.");
+    logger.warn(
+      "redisConnection and redisConnectionOptions supplied. Only redisConnection will be used.",
+    );
   }
 
   const handler = new WebKeyHandler({ baseUrl, logger, clientName });
