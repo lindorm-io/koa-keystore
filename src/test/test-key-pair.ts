@@ -2,10 +2,10 @@ import { Algorithm, KeyPair, KeyType, NamedCurve } from "@lindorm-io/key-pair";
 
 export const getTestKeyPairEC = (): KeyPair =>
   new KeyPair({
-    id: "7531da89-12e9-403e-925a-5da49100635c",
     algorithms: [Algorithm.ES512],
     allowed: new Date("2020-01-01T08:00:00.000Z"),
     created: new Date("2020-01-01T08:00:00.000Z"),
+    updated: new Date("2021-01-01T10:00:00.000Z"),
     namedCurve: NamedCurve.P521,
     privateKey:
       "-----BEGIN PRIVATE KEY-----\n" +
@@ -28,10 +28,10 @@ export const getTestKeyPairEC = (): KeyPair =>
 
 export const getTestKeyPairRSA = (): KeyPair =>
   new KeyPair({
-    id: "3f6ab288-7e0e-48b5-90ab-4684257ebe5e",
     algorithms: [Algorithm.RS256, Algorithm.RS384, Algorithm.RS512],
     allowed: new Date("2020-01-01T08:00:00.000Z"),
     created: new Date("2020-01-01T08:00:00.000Z"),
+    updated: new Date("2021-01-01T09:00:00.000Z"),
     passphrase: "",
     privateKey:
       "-----BEGIN ENCRYPTED PRIVATE KEY-----\n" +
