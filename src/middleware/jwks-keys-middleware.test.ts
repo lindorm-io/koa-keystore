@@ -1,14 +1,13 @@
-import MockDate from "mockdate";
 import { Metric } from "@lindorm-io/koa";
 import { getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 import { jwksKeysMiddleware } from "./jwks-keys-middleware";
 
-MockDate.set("2021-01-01T08:00:00.000Z");
+const keyRSA = getTestKeyPairRSA();
 
 jest.mock("../class", () => ({
   WebKeyHandler: class WebKeyHandler {
     public async getKeys() {
-      return [getTestKeyPairRSA()];
+      return [keyRSA];
     }
   },
 }));
@@ -16,11 +15,13 @@ jest.mock("../class", () => ({
 const next = () => Promise.resolve();
 
 describe("jwksKeysMiddleware", () => {
+  const keyEC = getTestKeyPairEC();
+
   let ctx: any;
 
   beforeEach(async () => {
     ctx = {
-      keys: [getTestKeyPairEC()],
+      keys: [keyEC],
       logger,
       metrics: {},
     };
@@ -35,7 +36,7 @@ describe("jwksKeysMiddleware", () => {
       })(ctx, next),
     ).resolves.toBeUndefined();
 
-    expect(ctx.keys).toMatchSnapshot();
+    expect(ctx.keys).toStrictEqual([keyEC, keyRSA]);
     expect(ctx.metrics.keystore).toStrictEqual(expect.any(Number));
   });
 });

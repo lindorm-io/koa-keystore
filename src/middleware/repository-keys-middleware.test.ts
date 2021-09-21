@@ -1,31 +1,33 @@
-import MockDate from "mockdate";
 import { Metric } from "@lindorm-io/koa";
-import { getTestKeyPairEC, getTestKeyPairRSA, getTestRepository, logger } from "../test";
+import { getTestKeyPairEC, getTestKeyPairRSA, logger } from "../test";
 import { repositoryKeysMiddleware } from "./repository-keys-middleware";
-
-MockDate.set("2021-01-01T08:00:00.000Z");
 
 const next = () => Promise.resolve();
 
 describe("repositoryKeysMiddleware", () => {
+  const keyEC = getTestKeyPairEC();
+  const keyRSA = getTestKeyPairRSA();
+
   let ctx: any;
 
   beforeEach(async () => {
     ctx = {
-      keys: [getTestKeyPairEC()],
+      keys: [keyEC],
       logger,
       metrics: {},
-      repository: await getTestRepository(),
+      repository: {
+        keyPairRepository: {
+          findMany: jest.fn().mockResolvedValue([keyRSA]),
+        },
+      },
     };
     ctx.getMetric = (key: string) => new Metric(ctx, key);
-
-    await ctx.repository.keyPairRepository.create(getTestKeyPairRSA());
   });
 
   test("should successfully add keys to context", async () => {
     await expect(repositoryKeysMiddleware(ctx, next)).resolves.toBeUndefined();
 
-    expect(ctx.keys).toMatchSnapshot();
+    expect(ctx.keys).toStrictEqual([keyEC, keyRSA]);
     expect(ctx.metrics.keystore).toStrictEqual(expect.any(Number));
   });
 });
