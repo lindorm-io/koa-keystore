@@ -1,15 +1,14 @@
 import { IntervalWorker } from "@lindorm-io/koa";
 import { KeyPairRepository } from "../infrastructure";
 import { Logger } from "@lindorm-io/winston";
-import { MongoConnection, MongoConnectionOptions } from "@lindorm-io/mongo";
+import { MongoConnection } from "@lindorm-io/mongo";
 import { add, sub } from "date-fns";
 import { generateKeyPair, KeyType, NamedCurve } from "@lindorm-io/key-pair";
 import { stringToDurationObject, stringToMilliseconds } from "@lindorm-io/core";
 
 interface Options {
   keyType?: KeyType;
-  mongoConnection?: MongoConnection;
-  mongoConnectionOptions?: MongoConnectionOptions;
+  mongoConnection: MongoConnection;
   namedCurve?: NamedCurve;
   passphrase?: string;
   rotationInterval?: string;
@@ -21,7 +20,6 @@ export const keyPairRotationWorker = (options: Options): IntervalWorker => {
   const {
     keyType = KeyType.EC,
     mongoConnection,
-    mongoConnectionOptions,
     namedCurve = NamedCurve.P521,
     passphrase = "",
     rotationInterval = "90 days",
@@ -31,29 +29,12 @@ export const keyPairRotationWorker = (options: Options): IntervalWorker => {
 
   const logger = winston.createChildLogger(["keyPairRotationWorker"]);
 
-  if (!mongoConnection && !mongoConnectionOptions) {
-    throw new Error(
-      "mongo connection must be established with either [ mongoConnection, mongoConnectionOptions ]",
-    );
-  }
-  if (mongoConnection && mongoConnectionOptions) {
-    logger.warn(
-      "mongoConnection and mongoConnectionOptions supplied. Only mongoConnection will be used.",
-    );
-  }
-
   return new IntervalWorker({
     callback: async (): Promise<void> => {
-      const mongo = mongoConnection
-        ? mongoConnection
-        : new MongoConnection(mongoConnectionOptions as MongoConnectionOptions);
-
-      if (!mongo.isConnected()) {
-        await mongo.connect();
-      }
+      await mongoConnection.waitForConnection();
 
       const repository = new KeyPairRepository({
-        db: mongo.database(),
+        db: mongoConnection.database(),
         logger,
       });
 
@@ -99,10 +80,6 @@ export const keyPairRotationWorker = (options: Options): IntervalWorker => {
         } else {
           logger.warn("KeyPair will never expire", next);
         }
-      }
-
-      if (!mongoConnection) {
-        await mongo.disconnect();
       }
     },
     logger,
