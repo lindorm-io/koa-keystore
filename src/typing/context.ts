@@ -5,7 +5,7 @@ import { MongoConnection } from "@lindorm-io/mongo";
 import { RedisConnection } from "@lindorm-io/redis";
 
 export interface KeystoreContext extends KoaContext {
-  client: {
+  connection: {
     mongo: MongoConnection;
     redis: RedisConnection;
   };
