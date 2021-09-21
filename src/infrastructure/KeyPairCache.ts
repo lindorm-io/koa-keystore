@@ -6,6 +6,7 @@ export class KeyPairCache extends LindormCache<KeyPairAttributes, KeyPair> {
     super({
       ...options,
       entityName: "KeyPair",
+      indexedAttributes: ["type"],
     });
   }
 
